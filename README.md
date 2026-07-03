@@ -27,7 +27,7 @@ Sistem ini dilengkapi dengan mekanisme `SECRET_KEY` sebagai lapisan autentikasi 
 * **Core Version**: v13.0
 * **Architecture**: Stand-alone PHP Script
 * **Design**: Cyberpunk / Neon / Dark
-* **License**: Proprietary (HxN@E.L.V)
+* **License**: Proprietary (HxN × E.L.V)
 
 ## 🚀 Penggunaan Dasar
 1. **Deployment**: Upload `cyberpunk.php` ke target.
