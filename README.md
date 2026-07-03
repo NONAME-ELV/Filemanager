@@ -2,7 +2,7 @@
 > *Cyberpunk Edition - High-Performance Tactical File Management*
 
 ---
-© 2026 HxN × E.L.V. ALL RIGHTS RESERVED.
+© 2026 HxN × ELV ALL RIGHTS RESERVED.
 **STATUS: [LOCKED & PATEN]**
 ---
 
