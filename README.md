@@ -1,4 +1,4 @@
-# E.L.V FILEMANAGER v12.1 
+# E.L.V FILEMANAGER v13.0 
 > *Cyberpunk Edition - High-Performance Tactical File Management*
 
 ---
@@ -6,7 +6,7 @@
 **STATUS: [LOCKED & PATEN]**
 ---
 
-E.L.V Filemanager v12.1 adalah evolusi dari *ELV ENGINE* v12.0, dirancang khusus untuk operasional taktis dengan estetika neon-cyberpunk. Tool ini dikembangkan untuk pengguna yang membutuhkan efisiensi, stabilitas, dan performa di atas segalanya.
+E.L.V Filemanager v13.0 adalah evolusi dari *ELV ENGINE* v13.0, dirancang khusus untuk operasional taktis dengan estetika neon-cyberpunk. Tool ini dikembangkan untuk pengguna yang membutuhkan efisiensi, stabilitas, dan performa di atas segalanya.
 
 ## 🛠 Tactical Toolkit (Fitur Utama)
 
@@ -24,7 +24,7 @@ Sistem ini dilengkapi dengan mekanisme `SECRET_KEY` sebagai lapisan autentikasi 
 * **Fungsi**: Bertindak sebagai *gateway* keamanan statis untuk memvalidasi sesi pengguna sebelum *tool* diaktifkan.
 
 ## 📋 Spesifikasi Teknis
-* **Core Version**: v12.1
+* **Core Version**: v13.0
 * **Architecture**: Stand-alone PHP Script
 * **Design**: Cyberpunk / Neon / Dark
 * **License**: Proprietary (HxN@E.L.V)
