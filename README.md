@@ -20,7 +20,7 @@ E.L.V Filemanager v12.1 adalah evolusi dari *ELV ENGINE* v12.0, dirancang khusus
 ## 🔐 Security Protocol: Secret Key
 Sistem ini dilengkapi dengan mekanisme `SECRET_KEY` sebagai lapisan autentikasi pertama untuk memproteksi akses ke *file manager*.
 
-* **Penting**: Pastikan variabel `$secret` di dalam `cyberpunk.php` sudah terkonfigurasi dengan benar untuk mencegah akses dari pihak yang tidak berwenang parameternya sebagai contoh default *cyberpunk.php?id=@elv*.
+* **Penting**: Pastikan variabel `$secret` di dalam `cyberpunk.php` sudah terkonfigurasi dengan benar untuk mencegah akses dari pihak yang tidak berwenang parameternya sebagai contoh default **cyberpunk.php?id=@elv**
 * **Fungsi**: Bertindak sebagai *gateway* keamanan statis untuk memvalidasi sesi pengguna sebelum *tool* diaktifkan.
 
 ## 📋 Spesifikasi Teknis
