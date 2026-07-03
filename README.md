@@ -18,10 +18,10 @@ E.L.V Filemanager v12.1 adalah evolusi dari *ELV ENGINE* v12.0, dirancang khusus
 | **ELV ENGINE** ⚙️ | *Core logic* efisien, *low-memory overhead*. |
 
 ## 📋 Spesifikasi Teknis
-* **Core Version**: v12.1
+* **Core Version**: E.L.V ENGINE v.1.0
 * **Architecture**: Magic & Physics PHP Script
 * **Design**: Cyberpunk / Neon / Dark
-* **License**: Proprietary (HxN@E.L.V)
+* **License**: Proprietary (HxN × E.L.V)
 
 ## 🚀 Penggunaan Dasar
 1. **Deployment**: Upload `cyberpunk.php` ke target.
@@ -32,4 +32,4 @@ E.L.V Filemanager v12.1 adalah evolusi dari *ELV ENGINE* v12.0, dirancang khusus
 ## ⚠️ Disclaimer
 Tool ini dibuat untuk tujuan edukasi dan *authorized penetration testing*. Penulis tidak bertanggung jawab atas penyalahgunaan atau tindakan ilegal apa pun. Gunakan dengan bijak.
 
-*Built with passion in the neon lights.*
+*Built with passion E.L.V cyberpunk 2077.*
