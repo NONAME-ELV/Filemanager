@@ -24,7 +24,7 @@ Sistem ini dilengkapi dengan mekanisme `SECRET_KEY` sebagai lapisan autentikasi 
 * **Fungsi**: Bertindak sebagai *gateway* keamanan statis untuk memvalidasi sesi pengguna sebelum *tool* diaktifkan.
 
 ## 📋 Spesifikasi Teknis
-* **Core Version**: v13.0
+* **Core Version**: v1.0
 * **Architecture**: Magic & Physics PHP Script
 * **Design**: Cyberpunk / Neon / Dark
 * **License**: Proprietary (HxN × E.L.V)
