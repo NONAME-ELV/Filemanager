@@ -38,4 +38,4 @@ Sistem ini dilengkapi dengan mekanisme `SECRET_KEY` sebagai lapisan autentikasi 
 ## ⚠️ Disclaimer
 Tool ini dibuat untuk tujuan edukasi dan *authorized penetration testing*. Penulis tidak bertanggung jawab atas penyalahgunaan atau tindakan ilegal apa pun. Gunakan dengan bijak.
 
-*Built with passion in the neon lights.*
+*Built with passion using magic and physics code.*
