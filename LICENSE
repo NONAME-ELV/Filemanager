@@ -1,30 +1,30 @@
-[ E.L.V FILEMANAGER V13.0 CYBERPUNK LICENSE AGREEMENT v13.0 ]
-[ STATUS: LOCKED & PATEN ]
-[ EDITION: CYBERPUNK 2077 ]
+E.L.V PROPRIETARY LICENSE AGREEMENT
+[ CYBERPUNK METROCITY EDITION ]
 
-COPYRIGHT (c) 2026 HxN × E.L.V. ALL RIGHTS RESERVED.
+Copyright (c) 2026 HxN@E.L.V. All rights reserved.
 
-1. PROPRIETARY SYSTEM ACCESS
-The E.L.V FILEMANAGER (the "System") is an exclusive digital asset property of HxN. The source architecture and execution logic are protected by universal digital rights. Unauthorized cloning, scraping, or redistribution is strictly classified as a violation of this agreement.
+1. KEPEMILIKAN (OWNERSHIP)
+E.L.V Filemanager beserta seluruh source code, algoritma, E.L.V Engine, dan aset visual di dalamnya adalah properti intelektual milik HxN@E.L.V sepenuhnya. Lisensi ini tidak memberikan hak kepemilikan kepada pengguna, melainkan hanya hak akses terbatas.
 
-2. USER PROTOCOL
-You are granted a non-transferable, temporary access key to operate this System solely for:
-   a. Educational Simulation.
-   b. Authorized Security Penetration Testing.
-   c. Private Server Administration.
+2. KETENTUAN PENGGUNAAN (USAGE TERMS)
+a. Pengguna diperbolehkan menggunakan, memodifikasi, dan mempelajari kode ini untuk tujuan edukasi, audit keamanan, dan pengembangan malware (Malware Development) di lingkungan yang diizinkan.
+b. Dilarang keras menghapus atau memodifikasi bagian "Credits" dan identitas pengembang (HxN@E.L.V) yang ada di dalam source code.
+c. Dilarang memperjualbelikan, melakukan rebranding tanpa izin, atau mendistribusikan ulang kode ini sebagai karya pribadi.
 
-3. SYSTEM RESTRICTIONS
-- You shall NOT reverse engineer, decompile, or decrypt the Core Wrapper logic.
-- You shall NOT modify the digital signature or remove the E.L.V identification markers.
-- You shall NOT commercialize or rent the System for illegal gain.
+3. LARANGAN AKTIVITAS ILEGAL
+Lisensi ini mencabut hak akses bagi siapa pun yang menggunakan alat ini untuk melakukan tindakan kriminal, peretasan yang merugikan pihak ketiga tanpa izin, atau aktivitas ilegal lainnya yang melanggar hukum di yurisdiksi pengguna.
 
-4. NEON WARNINGS (DISCLAIMER)
-THE SYSTEM IS PROVIDED "AS IS" IN A VOLATILE DIGITAL ENVIRONMENT. THE AUTHOR PROVIDES ZERO GUARANTEE OF STABILITY. THE AUTHOR DISCLAIMS ALL LIABILITY FOR DATA LOSS, SERVER DAMAGE, OR SYSTEM FAILURE ARISING FROM THE USE OF THIS SOFTWARE. 
+4. PENAFIAN TANGGUNG JAWAB (DISCLAIMER OF LIABILITY)
+PERANGKAT LUNAK INI DISEDIAKAN "SEBAGAIMANA ADANYA" (AS IS), TANPA JAMINAN APA PUN, BAIK TERSURAT MAUPUN TERSIRAT. 
+HxN@E.L.V TIDAK BERTANGGUNG JAWAB ATAS:
+- Kerusakan sistem, kehilangan data, atau kegagalan server yang disebabkan oleh penggunaan kode ini.
+- Tindakan hukum, tuntutan, atau kerugian yang timbul dari penyalahgunaan perangkat lunak ini oleh pengguna.
+- Segala bentuk aktivitas ilegal yang dilakukan pengguna. 
 
-5. OPERATIONAL ACCEPTANCE
-BY EXECUTING THIS SCRIPT, YOU ACKNOWLEDGE THAT YOU ARE A VERIFIED USER AND AGREE TO BE BOUND BY THESE PROTOCOLS.
+Risiko ditanggung sepenuhnya oleh pengguna.
+
+5. PENUTUP
+Dengan menggunakan kode atau file ini, pengguna dianggap setuju untuk mematuhi semua poin yang tercantum dalam lisensi ini. HxN@E.L.V berhak mencabut hak akses penggunaan tanpa pemberitahuan sebelumnya jika ditemukan pelanggaran terhadap lisensi ini.
 
 ---
-*Built with passion in the cyberpunk 2077.*
-AUTHOR: HxN
-PROJECT: E.L.V FILEMANAGER
+Stay safe, stay sharp. Built by HxN.
