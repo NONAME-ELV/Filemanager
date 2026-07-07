@@ -53,7 +53,7 @@ Proyek ini dibuat sepenuhnya untuk tujuan edukasi, audit, dan pengembangan siste
 
 ---
 ### Credits
-- **Developer:** HxN@E.L.V
+- **Developer:** HxN
 - **Edition:** Cyberpunk Metrocity
 - **Telegram:** @HxNoname
 
