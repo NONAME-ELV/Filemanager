@@ -40,7 +40,7 @@ Pada versi 13.0, sistem bypass parameter telah dihapus dan digantikan dengan sis
 ---
 
 ## ⚖️ License
-**Copyright (c) 2026 HxN@E.L.V. All rights reserved.**
+**Copyright (c) 2026 HxN All rights reserved.**
 
 `E.L.V Filemanager` adalah perangkat lunak proprietary. Dilarang mendistribusikan, menyalin, atau memodifikasi kode ini untuk tujuan komersial tanpa izin tertulis dari pengembang. 
 
