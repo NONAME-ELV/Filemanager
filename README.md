@@ -1,7 +1,7 @@
 ## E.L.V FILEMANAGER v13.0 
-`CYBERPUNK METROCITY NIGHT EDITION`
+`cyberpunk metrocity night edition`
 
-<img src="https://raw.githubusercontent.com/NONAME-ELV/Filemanager/refs/heads/main/ELV.png" width="300">
+<img src="https://raw.githubusercontent.com/NONAME-ELV/Filemanager/refs/heads/main/ELV.png" width="500">
 
 
 ### Project Profile
@@ -14,7 +14,7 @@
 ---
 
 ### Description
-- **Default Password** : `MrHaxorN0N4M3@ELV`
+- *Default Password* : `MrHaxorN0N4M3@ELV`
 - **E.L.V Filemanager v13.0** adalah *next-level web-based file management system* yang dirancang khusus untuk operasional di lingkungan *stealth*. Dengan antarmuka bertema *Cyberpunk Metrocity Night*, tool ini tidak hanya sekadar mengelola file, tetapi dirancang sebagai *cyberdeck* untuk efisiensi tinggi, navigasi file yang presisi, dan *post-exploitation* yang elegan.
 
 ### Core Features
