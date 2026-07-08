@@ -40,8 +40,12 @@ Tool ini dirancang untuk tujuan **Authorized Cyber Security Research** dan **Pen
   - `Copy/Paste`: Gunakan fungsi memori untuk memindahkan *payload* antar direktori.
   - `Unzip`: Ekstraksi paket *file* langsung di server untuk *deployment* cepat.
   - `Mass Deploy`: Gunakan fitur ini untuk melakukan *injeksi* masal pada *server directory* yang luas.
-
----
+  
 
 *"NEON MODE: CYBERPUNK | GRID: OVERDRIVE | COLOR_SCHEME: NIGHT"*
 **E.L.V Engine v1.0**
+---
+
+```bash
+git clone [https://github.com/NONAME-ELV/Filemanager.git](https://github.com/NONAME-ELV/Filemanager.git)
+cd Filemanager
