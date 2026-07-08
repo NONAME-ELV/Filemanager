@@ -1,30 +1,41 @@
-E.L.V PROPRIETARY LICENSE AGREEMENT
-[ CYBERPUNK METROCITY EDITION ]
+E.L.V FILEMANAGER v13.0
+=======================
 
-Copyright (c) 2026 HxN All rights reserved.
+[ PROJECT DATA ]
+----------------
+PROJECT NAME : E.L.V FILEMANAGER
+VERSION      : 13.0
+AUTHOR       : HxN
+EDITION      : CYBERPUNK METROCITY NIGHT
+STATUS       : LOCKED & PATEN
+DEFAULT KEY  : MrHaxorN0N4M3@ELV
 
-1. KEPEMILIKAN (OWNERSHIP)
-E.L.V Filemanager beserta seluruh source code, algoritma, E.L.V Engine, dan aset visual di dalamnya adalah properti intelektual milik HxN@E.L.V sepenuhnya. Lisensi ini tidak memberikan hak kepemilikan kepada pengguna, melainkan hanya hak akses terbatas.
+[ LICENSE AGREEMENT ]
+---------------------
+1. PROPRIETARY SOFTWARE: 
+   E.L.V Filemanager v13.0 adalah properti intelektual eksklusif dari HxN@E.L.V. 
+   Semua kode, logika (v14.2), dan antarmuka (Cyberpunk Metrocity Night) 
+   dilindungi oleh hak cipta pengembang.
 
-2. KETENTUAN PENGGUNAAN (USAGE TERMS)
-a. Pengguna diperbolehkan menggunakan, memodifikasi, dan mempelajari kode ini untuk tujuan edukasi, audit keamanan, dan pengembangan malware (Malware Development) di lingkungan yang diizinkan.
-b. Dilarang keras menghapus atau memodifikasi bagian "Credits" dan identitas pengembang (HxN) yang ada di dalam source code.
-c. Dilarang memperjualbelikan, melakukan rebranding tanpa izin, atau mendistribusikan ulang kode ini sebagai karya pribadi.
+2. AUTHORIZED USE:
+   Software ini hanya diizinkan untuk tujuan riset keamanan siber (Cyber Security 
+   Research), pengujian penetrasi (Penetration Testing) yang sah, dan operasional 
+   pengelolaan file server pribadi.
 
-3. LARANGAN AKTIVITAS ILEGAL
-Lisensi ini mencabut hak akses bagi siapa pun yang menggunakan alat ini untuk melakukan tindakan kriminal, peretasan yang merugikan pihak ketiga tanpa izin, atau aktivitas ilegal lainnya yang melanggar hukum di yurisdiksi pengguna.
+3. PROHIBITED ACTIONS:
+   - Dilarang keras memodifikasi core logic tanpa izin tertulis dari penulis.
+   - Dilarang mendistribusikan ulang kode sumber tanpa menyertakan kredibilitas asli (Author: HxN@E.L.V).
+   - Dilarang menggunakan untuk kegiatan ilegal, peretasan yang tidak sah (unauthorized hacking), 
+     atau tindakan kriminal siber lainnya yang melanggar hukum.
 
-4. PENAFIAN TANGGUNG JAWAB (DISCLAIMER OF LIABILITY)
-PERANGKAT LUNAK INI DISEDIAKAN "SEBAGAIMANA ADANYA" (AS IS), TANPA JAMINAN APA PUN, BAIK TERSURAT MAUPUN TERSIRAT. 
-HxN@E.L.V TIDAK BERTANGGUNG JAWAB ATAS:
-- Kerusakan sistem, kehilangan data, atau kegagalan server yang disebabkan oleh penggunaan kode ini.
-- Tindakan hukum, tuntutan, atau kerugian yang timbul dari penyalahgunaan perangkat lunak ini oleh pengguna.
-- Segala bentuk aktivitas ilegal yang dilakukan pengguna. 
+4. DISCLAIMER OF WARRANTY:
+   SOFTWARE INI DISEDIAKAN "APA ADANYA" (AS-IS) TANPA JAMINAN APAPUN, BAIK TERSURAT 
+   MAUPUN TERSIRAT. PENULIS TIDAK BERTANGGUNG JAWAB ATAS SEGALA BENTUK KERUSAKAN 
+   SISTEM, KEHILANGAN DATA, ATAU KONSEKUENSI HUKUM AKIBAT PENGGUNAAN SOFTWARE INI.
 
-Risiko ditanggung sepenuhnya oleh pengguna.
+5. ACKNOWLEDGMENT:
+   Penggunaan software ini secara otomatis menyatakan bahwa pengguna telah membaca, 
+   memahami, dan menyetujui persyaratan lisensi ini.
 
-5. PENUTUP
-Dengan menggunakan kode atau file ini, pengguna dianggap setuju untuk mematuhi semua poin yang tercantum dalam lisensi ini. HxN@E.L.V berhak mencabut hak akses penggunaan tanpa pemberitahuan sebelumnya jika ditemukan pelanggaran terhadap lisensi ini.
-
----
-Stay safe, stay sharp. Built by HxN.
+--------------------------------------------------------------------------------
+E.L.V © 2026 - ALL RIGHTS RESERVED | SYSTEM OPTIMIZED
