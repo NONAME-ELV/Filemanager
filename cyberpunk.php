@@ -11,8 +11,7 @@
  * AUTHOR     : HxN@E.L.V
  * Telegram   : @HxNoname
  * EDITION    : CYBERPUNK METROCITY NIGHT
- * FIX        : MassDeploy, Unzip Nav, Symlink User
- */
+**/
 
 $status_msg = '';
 
