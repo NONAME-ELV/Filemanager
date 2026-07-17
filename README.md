@@ -50,5 +50,4 @@ Tool ini dirancang untuk tujuan **Authorized Cyber Security Research** dan **Pen
 ---
 
 ```bash
-git clone [https://github.com/NONAME-ELV/Filemanager.git](https://github.com/NONAME-ELV/Filemanager.git)
-cd Filemanager
+git clone [https://github.com/NONAME-ELV/Filemanager.git]
