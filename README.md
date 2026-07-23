@@ -37,7 +37,7 @@ Tool ini dirancang untuk tujuan **Authorized Cyber Security Research** dan **Pen
 ---
 
 ### Command & Usage
-- **Auth**: Gunakan *Access Key* yang telah dikonfigurasi dalam `fm.php`.
+- **Auth**: Gunakan *Access Key* yang telah dikonfigurasi dalam `cyberpunk.php`.
 - **System Info**: Lihat `Kernel`, `Server IP`, dan `PHP Version` langsung dari dasbor utama.
 - **Tactical Actions**:
   - `Copy/Paste`: Gunakan fungsi memori untuk memindahkan *payload* antar direktori.
