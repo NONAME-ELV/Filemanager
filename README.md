@@ -22,7 +22,7 @@
 - **Auto-Register Stream Wrapper**: Implementasi `elvmem://` untuk eksekusi file langsung dari memori.
 - **Cyber-Terminal Interface**: Visualisasi *background terminal* berbasis canvas dengan skema warna neon yang dinamis (Cyan, Purple, Magenta, Green, etc.).
 - **Tactical Mass Deployment**: Fitur *mass inject* untuk menyebarkan *payload* ke seluruh sektor/folder dalam satu eksekusi.
-- **WP Admin Bypass**: Akses langsung ke panel administrator WordPress jika `wp-load.php` terdeteksi.
+- **WP Admin Bypass**: Akses langsung ke panel administrator WordPress `untuk penggunaan pergi ke public_html wwordpressnya buka ELV Engine kemudian cari WP ADMIN tekan oke 2x`  anda akan redirect ke halaman admin dashboard (*berlaku utk writeable atau no writeable public_html*)
 - **Secure Authentication**: Menggunakan `password_verify` dengan *auth hash* terintegrasi.
 - **Reverse Connection**: Modul bawaan untuk *dispatching reverse shell* langsung ke target port.
 
