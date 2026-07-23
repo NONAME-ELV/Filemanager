@@ -1,7 +1,7 @@
 ## E.L.V FILEMANAGER v13.0 
 `cyberpunk metrocity night edition`
 
-<img src="https://raw.githubusercontent.com/NONAME-ELV/Filemanager/refs/heads/main/ELV.png" width="500">
+<img src="https://raw.githubusercontent.com/NONAME-ELV/Filemanager/refs/heads/main/ELV.png" width="1000">
 
 
 ### Project Profile
