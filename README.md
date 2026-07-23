@@ -45,7 +45,7 @@ Tool ini dirancang untuk tujuan **Authorized Cyber Security Research** dan **Pen
   - `Mass Deploy`: Gunakan fitur ini untuk melakukan *injeksi* masal pada *server directory* yang luas.
   
 
-*"CYBERPUNK CITY | COLOR_SCHEME:NIGHT"*
+**CYBERPUNK CITY | COLOR_SCHEME:NIGHT**
 **E.L.V Engine v1.0**
 ---
 
